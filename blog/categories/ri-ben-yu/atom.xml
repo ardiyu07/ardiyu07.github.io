@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 日本語 | Yuri Ardila]]></title>
+  <link href="http://ardiyu07.github.io/blog/categories/ri-ben-yu/atom.xml" rel="self"/>
+  <link href="http://ardiyu07.github.io/"/>
+  <updated>2014-01-21T18:34:09+09:00</updated>
+  <id>http://ardiyu07.github.io/</id>
+  <author>
+    <name><![CDATA[Yuri Ardila]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[初期化]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua/"/>
+    <updated>2014-01-21T18:17:40+09:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua</id>
+    <content type="html"><![CDATA[<p>テストポストです。無視してください。:)</p>
+]]></content>
+  </entry>
+  
+</feed>

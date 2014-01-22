@@ -1,12 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://ardiyu07.github.io/blog/2014/01/21/first-post/</loc>
+        <lastmod>2014-01-22T12:38:11+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua/</loc>
+        <lastmod>2014-01-21T18:18:10+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/blog/2014/01/21/mukadimah/</loc>
+        <lastmod>2014-01-21T18:31:46+09:00</lastmod>
+    </url>
+    <url>
         <loc>http://ardiyu07.github.io/assets/bootstrap/css.html</loc>
         <lastmod>2014-01-21T16:51:30+09:00</lastmod>
     </url>
     <url>
         <loc>http://ardiyu07.github.io/assets/bootstrap/</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
+        <lastmod>2014-01-22T12:38:11+09:00</lastmod>
     </url>
     <url>
         <loc>http://ardiyu07.github.io/assets/bootstrap/getting-started.html</loc>
@@ -30,7 +42,7 @@
     </url>
     <url>
         <loc>http://ardiyu07.github.io/</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
+        <lastmod>2014-01-22T17:30:48+09:00</lastmod>
     </url>
     <url>
         <loc>http://ardiyu07.github.io/about/</loc>
@@ -38,7 +50,7 @@
     </url>
     <url>
         <loc>http://ardiyu07.github.io/blog/archives/</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
+        <lastmod>2014-01-22T12:38:11+09:00</lastmod>
     </url>
     <url>
         <loc>http://ardiyu07.github.io/robots.txt</loc>

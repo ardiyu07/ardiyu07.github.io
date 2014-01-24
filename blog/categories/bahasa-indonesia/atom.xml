@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bahasa-Indonesia | Yuri Ardila]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/bahasa-indonesia/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-01-23T16:48:15+09:00</updated>
+  <updated>2014-01-24T11:41:08+09:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -12,28 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[cygwin + ipython. Wajib Dicoba.]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/22/id-cygwin-ipython-perfection/"/>
-    <updated>2014-01-22T14:27:00+09:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/22/id-cygwin-ipython-perfection</id>
-    <content type="html"><![CDATA[<p>Saya termasuk orang yang suka sama UNIX environment, tapi gak terlalu suka sama GUI GNU/Linux. Karena itu sampe sekarang masih pake Windows 7.</p>
-
-<p>Orang seperti kita, cocoknya pasti menggunakan <a href="http://www.cygwin.com/">Cygwin</a>.</p>
-
-<!--more-->
-
-
-<p>Tapi ada yang sangat disayangkan dari Cygwin, yaitu ketidakefisienan dalam menginstall sebuah <em>tool</em> atau <em>software</em>. Kadang-kadang gak ada jalan lain selain menginstall secara manual (lewat process yang umum seperti penggunaan <a href="http://en.wikipedia.org/wiki/GNU_build_system">autotools</a>. <code>./configure; make; make install</code>). Di GNU/Linux, ada <em>tool</em> yang praktis kayak <code>yum</code> atau <code>apt-get</code>, yang memungkinkan <em>developer</em> untuk menginstall hanya dalam satu baris <em>command</em>. (Sebenernya di Cygwin juga ada <em>open-source project</em> untuk ini, namanya <a href="http://code.google.com/p/apt-cyg/">apt-cyg</a>, tapi sayangnya bukan default package Cygwin).</p>
-
-<p>Baru-baru ini saya menghadapi masalah untuk setup <code>ipython</code> dengan <code>numpy</code>+<code>scipy</code>+<code>matplotlib</code> di Cygwin, dan harus menggunakan weekend satu hari penuh untuk ini..</p>
-
-<p>Tapi sepertinya usaha itu gak sia-sia.</p>
-
-<p>Cygwin + Ipython. Mantap gan. Wajib dicoba!</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mukadimah]]></title>

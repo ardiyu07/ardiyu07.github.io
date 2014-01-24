@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Yuri Ardila]]></title>
-  <link href="http://ardiyu07.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Python | Yuri Ardila]]></title>
+  <link href="http://ardiyu07.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
   <updated>2014-01-24T12:59:21+09:00</updated>
   <id>http://ardiyu07.github.io/</id>
@@ -84,33 +84,6 @@ Windows 7のGUIの方が使いやすいし、見た目もいい感じだし。�
 <p>Nevertheless, It was really worth the time.</p>
 
 <p>Cygwin + Ipython. is. just. amazing.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mukadimah]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/21/mukadimah/"/>
-    <updated>2014-01-21T18:18:18+09:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/21/mukadimah</id>
-    <content type="html"><![CDATA[<p>Test post doang. Gak usah dihiraukan. <i class='emoji smile'></i></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[初期化]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua/"/>
-    <updated>2014-01-21T18:17:40+09:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua</id>
-    <content type="html"><![CDATA[<p>テストポストです。無視してください。<i class='emoji smile'></i></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First Post]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/21/first-post/"/>
-    <updated>2014-01-21T16:25:52+09:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/21/first-post</id>
-    <content type="html"><![CDATA[<p>Only a Test Post. Please Ignore. <i class='emoji smile'></i></p>
 ]]></content>
   </entry>
   

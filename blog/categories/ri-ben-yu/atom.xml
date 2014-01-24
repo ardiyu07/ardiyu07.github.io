@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 日本語 | Yuri Ardila]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/ri-ben-yu/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-01-24T11:41:08+09:00</updated>
+  <updated>2014-01-24T12:59:21+09:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[cygwin + ipython. Super便利.]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/01/22/jp-cygwin-ipython-perfection/"/>
+    <updated>2014-01-22T14:27:00+09:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/01/22/jp-cygwin-ipython-perfection</id>
+    <content type="html"><![CDATA[<p>僕はUNIXのプログラミング環境が好きです。ただ、なんかGNU/LinuxのGUIはピンとこないですね。
+Windows 7のGUIの方が使いやすいし、見た目もいい感じだし。（慣れの問題かな..）</p>
+
+<p>僕みたいな人にとっては、<a href="http://www.cygwin.com/">Cygwin</a>を使うと便利です。</p>
+
+<!--more-->
+
+
+<p>しかし、まーWindowsの環境とPOSIXスタイルの環境は大分異なるのが理由かもしれないけど、
+たまにはツールとかソフトをインストールするには、Cygwinだと非常に時間がかかってしまう
+時もあります。GNU/Linuxだと、<code>yum</code>とか<code>apt-get</code>という必殺技がデフォルトでパッケージに入って
+便利だけど、Cygwinだと残念ながらデフォルトのパッケージにはない。。
+(最近<a href="http://code.google.com/p/apt-cyg/">apt-cyg</a>というのを見つけてテンション上がったけど)</p>
+
+<p>こないだCygwin上で<a href="ipython.org">ipython</a>+<a href="numpy.org">numpy</a>+<a href="scipy.org">scipy</a>+<a href="matplotlib.org">matplotlib</a>を使いたくてインストールしてみたところ、
+土曜日丸一日使ってしまった。</p>
+
+<p>僕の休日を返せ。と言いたかったけど、<code>ipython</code>+<code>numpy</code>+<code>scipy</code>+<code>matplotlib</code>の素晴らしさで落ち着けた。</p>
+
+<p>ということで言いたかったのは、</p>
+
+<p>Cygwin + Ipythonは、す・ば・ら・し・い。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[初期化]]></title>

@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>初期化 - Yuri Ardila</title>
+  <title>Introduction to Parallel Programming - Yuri Ardila</title>
   <meta name="author" content="Yuri Ardila">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua">
+  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/01/24/en-introduction-to-parallel-programming">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Yuri Ardila" type="application/atom+xml">
 
@@ -110,20 +110,62 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-21T18:17:40+09:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-24T18:16:37+09:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
         
       </p>
     
     
     <h1 class="entry-title">
-        初期化
+        Introduction to Parallel Programming
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix"><p>テストポストです。無視してください。<i class='emoji smile'></i></p>
+<div class="entry-content clearfix"><p>Using exactly the same machine, same cpu, same gpu, same programming language,
+<strong>Who doesn&rsquo;t want to see his programs run faster?</strong></p>
+
+<!--more-->
+
+
+
+
+<!---
+MASUKIN MEME/GAMBAR MEME DISINI
+-->
+
+
+<p>Many parallel programming frameworks/APIs have been developed and released recently, and with the help of many amazing programmers worldwide, these APIs have also been wrapped beautifully into many front-end languages such as Python, Ruby, or even Javascript. Some also are under development to be ported to more delicate programming languages such as Haskell, Scala, or Clojure.</p>
+
+<!---
+CARI PROJECT PORTINGAN KE CUDA, OPENCL, ETC
+-->
+
+
+<p>Soo for those of you who haven&rsquo;t seen/experienced the elegance of parallel computing, what are you waiting for?</p>
+
+<p>Let me share here some of the parallel programming frameworks I know, and I believe they are famous enough to not get disappointed when using it.</p>
+
+<p>First of all, there is <a href="http://www.nvidia.com/content/devzone/index.html">CUDA</a>, developed by NVIDIA, a leading company in the Graphics Processing Unit devices. I have been developing some programs using CUDA for 2 years now, and the API itself is pretty simple and straightforward to use, and I am amazed with the number of sample programs they provided inside the CUDA Toolkit, makes us incredibly easy to learn some stuffs, not only how to use CUDA API but also some important algorithms and tuning-up for developing a parallel executed program. Having said so, actually it was pretty hard to develop using CUDA back then (when it was still version 1.x), but NVIDIA just released a new version of CUDA (CUDA 4.2 going to CUDA 5) and everything just became easier, to understand, to install, and to develop with that. Most important thing, note that since NVIDIA is the developer and it is not an open source software, CUDA is only available for NVIDIA&rsquo;s GPUs (from GeForce 8800 to the newest one). The technique of having your computation that is supposed to run sequentially on CPU is basically called a <strong>GPGPU (General Purposed GPU) computing</strong>.</p>
+
+<!---
+CONTOH CUDA
+-->
+
+
+<p>And then there is <a href="http://www.khronos.org/opencl/">OpenCL</a>, derived from <strong>Open Computing Language</strong>, initially developed by Apple and Khronos Group. OpenCL is a framework for parallelization and is aimed to be able to execute  in many platforms. At first OpenCL was only released with the standard C99 API but then they added the C++ wrappers to the runtime API, hence makes us easier to do some OOP stuff. OpenCL can run on some major vendors&#8217; devices: AMD, Intel, and NVIDIA, where each vendor has its own compiler (or library) to interpret and/or optimize the standardized OpenCL runtime API. afaik it is Khronos who&rsquo;s been leading the OpenCL development and standardizing the API. Since every vendor has different technology equipped to its device, each of them releases its own OpenCL programming SDK and this can be seen inside the website respectively: <a href="http://developer.amd.com/sdks/AMDAPPSDK/Pages/default.aspx">AMD OpenCL SDK</a>, <a href="http://software.intel.com/en-us/articles/vcsource-tools-opencl-sdk/">Intel OpenCL SDK</a>, and NVIDIA OpenCL SDK which comes with the CUDA Toolkit. Each SDK is provided with a unique library and some sample programs, and each vendor&rsquo;s compiler has its own way to optimize in compile time. IMO, learning OpenCL will not be that hard if you have previously done some CUDA programming.</p>
+
+<p>Those two above are the APIs I&rsquo;ve been using for a while to do some parallel stuffs, and there are plenty more out there and you can get some of them for free (or maybe even already installed in your computer) but some aren&rsquo;t.</p>
+
+<p>Examples for free APIs: <a href="http://openmp.org/wp/">OpenMP</a>, <a href="http://threadingbuildingblocks.org/">Intel&rsquo;s TBB</a>, <a href="http://software.intel.com/en-us/articles/intel-array-building-blocks/">Intel&rsquo;s ArBB</a>, <a href="https://computing.llnl.gov/tutorials/pthreads/">Pthreads</a></p>
+
+<!---
+CONTOH OpenMP, Intel's TBB, Intel's ArBB, Pthreads
+-->
+
+
+<p>Not free: <a href="http://www.pgroup.com/resources/accel.htm">PGI&rsquo;s Compiler with OpenACC</a>, <a href="http://www.caps-entreprise.com/fr/page/index.php?id=148&amp;amp;p_p=36">CAPS&#8217; Compiler with OpenACC</a></p>
 </div>
 
 
@@ -147,13 +189,13 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-21T18:17:40+09:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-24T18:16:37+09:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
           
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ri-ben-yu/'>日本語</a>
+    <a class='category' href='/blog/categories/amd/'>AMD</a>, <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/intel/'>Intel</a>, <a class='category' href='/blog/categories/nvidia/'>NVIDIA</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>, <a class='category' href='/blog/categories/parallel-computing/'>Parallel Computing</a>
   
 </span>
 
@@ -162,7 +204,7 @@
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/01/24/en-introduction-to-parallel-programming/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/01/24/en-introduction-to-parallel-programming/" >Tweet</a>
   
   
   
@@ -172,10 +214,10 @@
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/blog/2014/01/21/first-post/" title="Previous Post: First Post">&laquo; First Post</a></li>
+            <li class="previous"><a href="/blog/2014/01/22/jp-cygwin-ipython-perfection/" title="Previous Post: cygwin + ipython. Super便利.">&laquo; cygwin + ipython. Super便利.</a></li>
             
             
-            <li class="next"><a href="/blog/2014/01/21/mukadimah/" title="Next Post: Mukadimah">Mukadimah &raquo;</a></li>
+            <li class="next"><a href="/blog/2014/01/24/id-introduction-to-parallel-programming/" title="Next Post: Introduction to Parallel Programming">Introduction to Parallel Programming &raquo;</a></li>
             
           </ul>
         
@@ -209,7 +251,7 @@
     
     
     
-    <a class="list-group-item " href="/blog/2014/01/24/en-introduction-to-parallel-programming/">Introduction to Parallel Programming</a>
+    <a class="list-group-item active" href="/blog/2014/01/24/en-introduction-to-parallel-programming/">Introduction to Parallel Programming</a>
     
     
     
@@ -254,7 +296,7 @@
     
     
     
-    <a class="list-group-item active" href="/blog/2014/01/21/chu-qi-hua/">初期化</a>
+    <a class="list-group-item " href="/blog/2014/01/21/chu-qi-hua/">初期化</a>
     
     
     

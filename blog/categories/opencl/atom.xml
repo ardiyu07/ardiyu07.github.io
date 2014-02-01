@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenCL | Yuri Ardila]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/opencl/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-01T05:42:51-08:00</updated>
+  <updated>2014-02-01T05:45:02-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[並列プログラミングの概念: CUDAとOpenCL]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/02/01/jp-introduction-to-parallel-programming/"/>
+    <updated>2014-02-01T01:16:37-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/02/01/jp-introduction-to-parallel-programming</id>
+    <content type="html"><![CDATA[<p>同じ機械、同じCPU、同じGPU、同じプログラミング言語で、</p>
+
+<p><strong> 自分のプログラムがもっと高速に実行できること、見たくありませんか？ </strong></p>
+
+<!--more-->
+
+
+<p>最近、多くの並列プログラミングのフレームワークが登場してきている。
+世界中のプログラマが、使いやすさの面をかんがえて、
+Python、Ruby、Javascriptといったスクリプト言語
+のラッパも開発されて、<a href="github.com">GitHub</a>とかに載ってたりします。</p>
+
+<ul>
+<li>Haskell: <a href="http://hackage.haskell.org/package/cuda">FFI binding to the CUDA interface for programming NVIDIA GPUs</a></li>
+<li>Ruby: <a href="https://github.com/xman/sgc-ruby-cuda/blob/master/doc/devel.rdoc">SGC-Ruby-CUDA</a></li>
+<li>Python: <a href="https://pypi.python.org/pypi/pyopencl">PyOpenCL</a></li>
+</ul>
+
+
+<p>未だに並列プログラミングを知りませんといった方々には、並列プログラミングをやって
+始めませんか？</p>
+
+<p>まず、NVIDIA社が開発した<a href="http://www.nvidia.com/content/devzone/index.html">CUDAアーキテクチャ</a>。
+シンプルで使いやすいと思います。それに、CUDAのSDKに付いてくるサンプルの数も豊富にあります。
+もちろん、サンプルといっても、初級のレベルから最上級までのレベルが用意されています。
+ただ単純にCUDAのAPIの使い方だけではなく、並列プログラミングの手順まで教えてくれたり
+するので、あらかじめ予習するのがお勧めです。</p>
+
+<p>昔は、CUDAのアーキテクチャとSDKは（超）不便ではあったが、最新のやつだと間違いなく便利です。
+例えば、昔のやつだと、カーネルは１つしか動作できなかったり、倍精度の計算はサポート
+されなかったので単精度の組み合わせを使ってかなり遅かったり。サンプルも多くなかったし。
+最近のやつは、サンプルも豊富だし、カーネル内のカーネル呼び出し（つまり、再帰的関数呼び出し）
+が可能になりました。なんといっても、最近のCUDAのAPIとSDKは、使いやすいし便利です。
+しかし、残念なことに、CUDAはNVIDIAのものなので、NVIDIAのGPUでしか動作できない。</p>
+
+<p>FYI: 一般にはCPUがやっている計算を、GPUで計算させることは、<strong> GPGPU（GPUによる汎目的計算）</strong>と言います。</p>
+
+<p>次は、<a href="http://www.khronos.org/opencl/">OpenCL</a>です。Open Computing Languageの略。
+当初はAppleとKhronos Groupが開発を指揮っていましたが、最近では主にKhronos GroupがOpenCL開発を
+リードしています。OpenCLを利用して嬉しいのは、多岐に渡るプラットフォームで動作することができる。
+また、当初はC言語しかサポートされなかったが、OpenCL 1.1からC++も使えるようになりました。</p>
+
+<p>NVIDIAのGPUや、IntelのCPU（とGPU両方、HD4000型以降）、AMDのGPU、ARMのCPUで動きます。
+何故可能なんだ？これらのメーカーのプログラマの代表者が集まり、合同開発をしているからです。それぞれのメーカー
+のチップが個性的な機能で作られているが、一つのAPIを通じて利用できるのが、素晴らしいと思いません？
+それぞれのベンダーのOpenCLのSDKは<a href="http://developer.amd.com/sdks/AMDAPPSDK/Pages/default.aspx">AMD OpenCL SDK</a>,
+<a href="http://software.intel.com/en-us/articles/vcsource-tools-opencl-sdk/">Intel OpenCL SDK</a>,
+と<a href="https://developer.nvidia.com/opencl">NVIDIA OpenCL SDK</a>にあります。それぞれのOpenCLのSDKも
+それぞれのベンダーが作成したサンプルも付いています。</p>
+
+<p>上記２つは僕が主に利用したものです。もちろんこの他にも、多数あります。
+無料・有料の観点で分けると、</p>
+
+<p>フリー: <a href="http://openmp.org/wp/">OpenMP</a>, <a href="http://threadingbuildingblocks.org/">Intel&rsquo;s TBB</a>,
+<a href="http://software.intel.com/en-us/articles/intel-array-building-blocks/">Intel&rsquo;s ArBB</a>,
+<a href="https://computing.llnl.gov/tutorials/pthreads/">Pthreads</a></p>
+
+<p>有料: <a href="http://www.pgroup.com/resources/accel.htm">PGI&rsquo;s Compiler with OpenACC</a>,
+<a href="http://www.caps-entreprise.com/fr/page/index.php?id=148&amp;amp;p_p=36">CAPS' Compiler with OpenACC</a></p>
+
+<!---
+http://devblogs.nvidia.com/parallelforall/six-ways-saxpy/
+http://hackage.haskell.org/package/cuda
+https://github.com/xman/sgc-ruby-cuda/blob/master/doc/devel.rdoc
+http://www.jcuda.org/jcuda/doc/index.html?jcuda/runtime/package-summary.html
+http://en.wikipedia.org/wiki/OpenMP
+http://msdn.microsoft.com/en-us/library/dd460713%28v=vs.110%29.aspx
+http://msdn.microsoft.com/en-us/library/dd460720%28v=vs.110%29.aspx
+http://www.codeproject.com/Articles/71285/Introducing-NET-4-0-Parallel-Programming
+http://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
+http://code.google.com/p/noesis/source/browse/trunk/sandbox/src/sandbox/parallel/example/SAXPY.java?spec=svn329&r=329
+http://www.openacc.org/
+https://www.coursera.org/course/hetero
+http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
+-->
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Introduction to Parallel Programming: CUDA and OpenCL]]></title>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: English | Yuri Ardila]]></title>
-  <link href="http://ardiyu07.github.io/blog/categories/english/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Parallel Computing | Yuri Ardila]]></title>
+  <link href="http://ardiyu07.github.io/blog/categories/parallel-computing/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
   <updated>2014-02-01T05:25:34-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
@@ -98,37 +98,6 @@ https://www.coursera.org/course/hetero
 http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
 -->
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[cygwin + ipython. A Perfection.]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/21/en-cygwin-ipython-perfection/"/>
-    <updated>2014-01-21T21:27:00-08:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/21/en-cygwin-ipython-perfection</id>
-    <content type="html"><![CDATA[<p>I&rsquo;m one of those programmer who just loves anything about UNIX environment, but just feels weird about using Linux GUI hence stuck with Windows 7.</p>
-
-<p>The most perfect tool for us is of course, <a href="http://www.cygwin.com/">Cygwin</a>.</p>
-
-<!--more-->
-
-
-<p>However, there are some (many, actually) weaknesses in Cygwin such as sometime you have to manually figure out how to install some softwares manually, instead of just invoking sudo apt-get in a Linux system. (Although there is an amazing project for this, <a href="http://code.google.com/p/apt-cyg/">apt-cyg</a>. But this is not Cygwin&rsquo;s default package.)</p>
-
-<p>I recently just faced this problem when trying to install <a href="ipython.org">ipython</a> with <a href="numpy.org">numpy</a>+<a href="scipy.org">scipy</a>+<a href="matplotlib.org">matplotlib</a> in my system in Cygwin, and had to spend all day (which was Saturday), to finally have it installed correctly.</p>
-
-<p>Nevertheless, It was really worth the time.</p>
-
-<p>Cygwin + Ipython. is. just. amazing.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First Post]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/20/first-post/"/>
-    <updated>2014-01-20T23:25:52-08:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/20/first-post</id>
-    <content type="html"><![CDATA[<p>Only a Test Post. Please Ignore. <i class='emoji smile'></i></p>
 ]]></content>
   </entry>
   

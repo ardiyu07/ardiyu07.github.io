@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Perkenalan ke Parallel Programming: CUDA dan OpenCL - Yuri Ardila</title>
+  <meta name="author" content="Yuri Ardila">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/01/24/id-introduction-to-parallel-programming">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="Yuri Ardila" type="application/atom+xml">
+
+  <link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+
+  <script src="/javascripts/libs/jquery/jquery-2.0.3.min.js"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47309787-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body   >
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Yuri Ardila</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/about">About Me</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="search navbar-form navbar-right" action="http://google.com/search" method="GET">
+                    <input type="hidden" name="q" value="site:ardiyu07.github.io">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9">
+    <article class="hentry" role="article">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-24T01:16:37-08:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Perkenalan Ke Parallel Programming: CUDA Dan OpenCL
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix"><p>Dengan komputer yang sama, CPU yang sama, GPU yang sama, bahasa pemrograman yang sama,</p>
+
+<p><strong> Siapa yang gak mau liat program yang kita bikin jalan lebih cepat dari originalnya? </strong></p>
+
+<!--more-->
+
+
+<p>Akhir-akhir ini, mulai banyak framework untuk parallel programming yang bermunculan.
+Dan dengan bantuan dari programmer-programmer handal dari seluruh dunia, bahasa pemrograman
+parallel yang biasanya dilakukan dengan C atau C++, sekarang sudah bisa dilakukan
+dengan scripting language seperti Python, Ruby, atau Javascript. Ada juga yang
+mempunyai semangat tinggi untuk menggunakan framework parallel ini di bahasa yang lebih
+rumit untuk functional programming, seperti Haskell atau Clojure.</p>
+
+<ul>
+<li>Haskell: <a href="http://hackage.haskell.org/package/cuda">FFI binding to the CUDA interface for programming NVIDIA GPUs</a></li>
+<li>Ruby: <a href="https://github.com/xman/sgc-ruby-cuda/blob/master/doc/devel.rdoc">SGC-Ruby-CUDA</a></li>
+<li>Python: <a href="https://pypi.python.org/pypi/pyopencl">PyOpenCL</a></li>
+</ul>
+
+
+<p>Bagi yang masih belum merasakan kehebatan dari parallel programming ini,
+tunggu apalagi? Langsung menuju TKP dan download SDKnya, gan!</p>
+
+<p>Pertama, ada <a href="http://www.nvidia.com/content/devzone/index.html">CUDA</a> yang di-maintain
+oleh NVIDIA. Saya sudah menggunakan framework ini selama kurang lebih 4 tahun.
+Frameworknya sendiri sangat simple dan straightforward untuk digunakan. Yang bikin
+saya makin terpana adalah, jumlah sample program yang disediakan oleh NVIDIA
+di dalam SDK(Software Development Kit)-nya. Bukan cuma hal-hal biasa seperti penggunakan
+CUDA APInya yang bisa kita pelajari dari SDK tersebut, tapi juga metode-metode yang bisa
+diimplementasikan dalam pengoptimisasian program (ke parallel program).</p>
+
+<p>Dulu sewaktu CUDA SDK masih di dalam tahap pengembangan awal (versi 1.x), sangat
+susah sekali menggunakan SDK dan menulis program dengan CUDA API. Tetapi seiring berjalannya
+waktu, CUDA Toolkit yang paling baru, sangat praktis dan mudah digunakan/dimengerti.
+Tapi perlu diingat, karena CUDA adalah model yang dikembangkan oleh NVIDIA, dan merupakan
+benda proprietary, CUDA hanya bisa digunakan di GPU yang dimanufaktur oleh NVIDIA.</p>
+
+<p>FYI: Teknik untuk melakukan komputasu yang biasanya dijalankan di CPU, biasa disebut <strong>komputasi GPGPU (General Purposed GPU)</strong>.</p>
+
+<p>Berikutnya, ada <a href="http://www.khronos.org/opencl/">OpenCL</a>, yang merupakan singkatan dari <strong>Open Computing Language</strong>.
+Awal mulanya, pengembangan OpenCL ini dipimpin oleh Apple dan Khronos Group (Sekarang Khronos Group yang memimpin
+development secara keseluruhan). OpenCL merupakan sebuah parallel programming framework, yang bisa dipakai
+di berbagai macam platform. Awal mulanya OpenCL hanya bisa digunakan dengan bahasa C saja, tetapi
+bermula dari spesifikasi OpenCL 1.2, bahasa C++ sudah mulai bisa digunakan dengan menggunakan wrapper library untuk
+bahasa C++.</p>
+
+<p>Berbagai macam hardware vendor yang ternama ikut dalam pengembangan OpenCL: AMD, Intel, dan NVIDIA,
+dan menyediakan compiler dan library-nya masing-masing. Karena masing-masing vendor mempunyai
+blueprint yang berbeda untuk produknya, masing-masing vendor mengeluarkan SDK sendiri untuk
+dalam penggunaan OpenCL. Seperti misalnya, untuk architecture GPU NVIDIA, struktur kernel yang dieksekusi
+secara <a href="http://stackoverflow.com/questions/19284598/scalar-and-vector-kernels-in-opencl">scalar</a> akan mempunyai
+execution speed yang lebih besar. Sedangkan untuk architecture CPU Intel,
+struktur kernel yang di-craft untuk menggunakan <a href="http://en.wikipedia.org/wiki/Vector_processor">vector register</a>
+akan berjalan lebih cepat dibandingkan
+menggunakan struktur kernel scalar.</p>
+
+<p>SDK dari masing-masing vendor bisa didownload dari website berikut:
+<a href="http://developer.amd.com/sdks/AMDAPPSDK/Pages/default.aspx">AMD OpenCL SDK</a>,
+<a href="http://software.intel.com/en-us/articles/vcsource-tools-opencl-sdk/">Intel OpenCL SDK</a>,
+dan <a href="https://developer.nvidia.com/opencl">NVIDIA OpenCL SDK</a>. Masing-masing SDK dilengkapi
+dengan sample yang disediakan oleh masing-masing vendor. Menurut saya, akan lebih mudah
+untuk mempelajari OpenCL apabila kita sudah mengerti programming dengan memakai CUDA
+terlebih dahulu.</p>
+
+<p>Tentu saja masih banyak lagi framework untuk parallel programming di luar sana.
+Rata-rata bisa didapatkan secara gratis, tapi ada juga yang tidak gratis.</p>
+
+<p>Contoh untuk framework yang gratis: <a href="http://openmp.org/wp/">OpenMP</a>, <a href="http://threadingbuildingblocks.org/">Intel&rsquo;s TBB</a>,
+<a href="http://software.intel.com/en-us/articles/intel-array-building-blocks/">Intel&rsquo;s ArBB</a>,
+<a href="https://computing.llnl.gov/tutorials/pthreads/">Pthreads</a></p>
+
+<p>Tidak gratis: <a href="http://www.pgroup.com/resources/accel.htm">PGI&rsquo;s Compiler with OpenACC</a>,
+<a href="http://www.caps-entreprise.com/fr/page/index.php?id=148&amp;amp;p_p=36">CAPS&#8217; Compiler with OpenACC</a></p>
+
+<!---
+http://devblogs.nvidia.com/parallelforall/six-ways-saxpy/
+http://hackage.haskell.org/package/cuda
+https://github.com/xman/sgc-ruby-cuda/blob/master/doc/devel.rdoc
+http://www.jcuda.org/jcuda/doc/index.html?jcuda/runtime/package-summary.html
+http://en.wikipedia.org/wiki/OpenMP
+http://msdn.microsoft.com/en-us/library/dd460713%28v=vs.110%29.aspx
+http://msdn.microsoft.com/en-us/library/dd460720%28v=vs.110%29.aspx
+http://www.codeproject.com/Articles/71285/Introducing-NET-4-0-Parallel-Programming
+http://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
+http://code.google.com/p/noesis/source/browse/trunk/sandbox/src/sandbox/parallel/example/SAXPY.java?spec=svn329&r=329
+http://www.openacc.org/
+https://www.coursera.org/course/hetero
+http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
+&#8211;>
+
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">Yuri Ardila</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-24T01:16:37-08:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/amd/'>AMD</a>, <a class='category' href='/blog/categories/bahasa-indonesia/'>Bahasa-Indonesia</a>, <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/intel/'>Intel</a>, <a class='category' href='/blog/categories/komputasi-paralel/'>Komputasi Paralel</a>, <a class='category' href='/blog/categories/nvidia/'>NVIDIA</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/01/24/id-introduction-to-parallel-programming/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/01/24/id-introduction-to-parallel-programming/" >Tweet</a>
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/2014/01/24/en-introduction-to-parallel-programming/" title="Previous Post: Introduction to Parallel Programming: CUDA and OpenCL">&laquo; Introduction to Parallel Programming: CUDA and OpenCL</a></li>
+            
+            
+            <li class="next"><a href="/blog/2014/01/24/jp-introduction-to-parallel-programming/" title="Next Post: 並列プログラミングの概念: CUDAとOpenCL">並列プログラミングの概念: CUDAとOpenCL &raquo;</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Language</h3>
+  </div>
+  <div id="recent_posts" class="list-group">
+    <a class="list-group-item " href="/blog/categories/english">English</a>
+    <a class="list-group-item " href="/blog/categories/ri-ben-yu">日本語</a>
+    <a class="list-group-item " href="/blog/categories/bahasa-indonesia">Bahasa Indonesia</a>
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/24/en-introduction-to-parallel-programming/">Introduction to Parallel Programming: CUDA and OpenCL</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/21/en-cygwin-ipython-perfection/">Cygwin + Ipython. A Perfection.</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/20/first-post/">First Post</a>
+    
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">最新記事</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/24/jp-introduction-to-parallel-programming/">並列プログラミングの概念: CUDAとOpenCL</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/21/jp-cygwin-ipython-perfection/">Cygwin + Ipython. Super便利.</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/21/chu-qi-hua/">初期化</a>
+    
+    
+    
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Pos Terbaru</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    
+    
+    
+    <a class="list-group-item active" href="/blog/2014/01/24/id-introduction-to-parallel-programming/">Perkenalan Ke Parallel Programming: CUDA Dan OpenCL</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/21/id-cygwin-ipython-perfection/">Cygwin + Ipython. Wajib Dicoba.</a>
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/21/mukadimah/">Mukadimah</a>
+    
+    
+    
+    
+    
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2014 - Yuri Ardila<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+</div>
+</footer>
+    <script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr-2.0.js"></script>
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </body>
+</html>

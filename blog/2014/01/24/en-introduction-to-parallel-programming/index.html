@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mukadimah - Yuri Ardila</title>
+  <title>Introduction to Parallel Programming: CUDA and OpenCL - Yuri Ardila</title>
   <meta name="author" content="Yuri Ardila">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/01/21/mukadimah">
+  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/01/24/en-introduction-to-parallel-programming">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Yuri Ardila" type="application/atom+xml">
 
@@ -110,20 +110,99 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-21T01:18:18-08:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-24T01:16:37-08:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
         
       </p>
     
     
     <h1 class="entry-title">
-        Mukadimah
+        Introduction to Parallel Programming: CUDA and OpenCL
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix"><p>Test post doang. Gak usah dihiraukan. <i class='emoji smile'></i></p>
+<div class="entry-content clearfix"><p>Using exactly the same machine, same cpu, same gpu, same programming language,</p>
+
+<p><strong>Who doesn&rsquo;t want to see his programs run faster?</strong></p>
+
+<!--more-->
+
+
+<p>Many parallel programming frameworks have been developed and released recently,
+and with the help of many amazing programmers worldwide, these APIs have also
+been wrapped beautifully into many scripting languages such as Python, Ruby,
+or even Javascript.</p>
+
+<ul>
+<li>Haskell: <a href="http://hackage.haskell.org/package/cuda">FFI binding to the CUDA interface for programming NVIDIA GPUs</a></li>
+<li>Ruby: <a href="https://github.com/xman/sgc-ruby-cuda/blob/master/doc/devel.rdoc">SGC-Ruby-CUDA</a></li>
+<li>Python: <a href="https://pypi.python.org/pypi/pyopencl">PyOpenCL</a></li>
+</ul>
+
+
+<p>Soo for those of you who haven&rsquo;t experienced the elegance of parallel computing,
+what are you waiting for?</p>
+
+<p>First of all, there is <a href="http://www.nvidia.com/content/devzone/index.html">CUDA</a>,
+which is maintained by NVIDIA. I have been developing some programs using CUDA
+for ~4 years now. The framework itself is pretty simple and straightforward to
+use, and I am amazed with the number of sample programs NVIDIA provides which
+come along with the CUDA Toolkit. They make us incredibly easy to learn some
+basic stuff, not only how to use CUDA API but also some important algorithms
+and optimization methods to develop a parallel program using CUDA.</p>
+
+<p>Having said so, actually it was pretty hard to develop using CUDA SDK back then
+(when it was still version 1.x). But as the time goes, the current SDK version
+just became easier to understand, to install, and to develop with. However,
+since CUDA API is not an open-source framework, it is only available for
+NVIDIA&rsquo;s GPUs (from GeForce 8800 to the newest one).</p>
+
+<p>FYI: The technique of having a computation that traditionally runs on CPU,
+and then ports it to GPU, is basically called a <strong>GPGPU (General Purposed GPU) computing</strong>.</p>
+
+<p>Then there is <a href="http://www.khronos.org/opencl/">OpenCL</a>, derived from <strong>Open Computing Language</strong>.
+OpenCL was initially developed by Apple and Khronos Group. It is another parallel programming
+framework, with the perk of being able to be executed in many platforms. At
+first OpenCL was only released with the standard C99, but then they added the
+C++ wrappers to the runtime API.</p>
+
+<p>Some major vendors support it: AMD, Intel, NVIDIA, with its own compiler.
+Since every vendor manufactures different computational technology, each of them
+releases an OpenCL programming SDK and this can be seen inside the following<br/>
+website respectively: <a href="http://developer.amd.com/sdks/AMDAPPSDK/Pages/default.aspx">AMD OpenCL SDK</a>,
+<a href="http://software.intel.com/en-us/articles/vcsource-tools-opencl-sdk/">Intel OpenCL SDK</a>,
+and <a href="https://developer.nvidia.com/opencl">NVIDIA OpenCL SDK</a>. Each SDK is provided
+with sample programs. IMO, learning OpenCL will not be that hard if you have
+previously done some CUDA programming.</p>
+
+<p>There are plenty more out there and you can get some of them for free
+(or maybe even already installed in your computer) but some aren&rsquo;t.</p>
+
+<p>Examples for free APIs: <a href="http://openmp.org/wp/">OpenMP</a>, <a href="http://threadingbuildingblocks.org/">Intel&rsquo;s TBB</a>,
+<a href="http://software.intel.com/en-us/articles/intel-array-building-blocks/">Intel&rsquo;s ArBB</a>,
+<a href="https://computing.llnl.gov/tutorials/pthreads/">Pthreads</a></p>
+
+<p>Non free: <a href="http://www.pgroup.com/resources/accel.htm">PGI&rsquo;s Compiler with OpenACC</a>,
+<a href="http://www.caps-entreprise.com/fr/page/index.php?id=148&amp;amp;p_p=36">CAPS&#8217; Compiler with OpenACC</a></p>
+
+<!---
+http://devblogs.nvidia.com/parallelforall/six-ways-saxpy/
+http://hackage.haskell.org/package/cuda
+https://github.com/xman/sgc-ruby-cuda/blob/master/doc/devel.rdoc
+http://www.jcuda.org/jcuda/doc/index.html?jcuda/runtime/package-summary.html
+http://en.wikipedia.org/wiki/OpenMP
+http://msdn.microsoft.com/en-us/library/dd460713%28v=vs.110%29.aspx
+http://msdn.microsoft.com/en-us/library/dd460720%28v=vs.110%29.aspx
+http://www.codeproject.com/Articles/71285/Introducing-NET-4-0-Parallel-Programming
+http://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
+http://code.google.com/p/noesis/source/browse/trunk/sandbox/src/sandbox/parallel/example/SAXPY.java?spec=svn329&r=329
+http://www.openacc.org/
+https://www.coursera.org/course/hetero
+http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
+&#8211;>
+
 </div>
 
 
@@ -147,13 +226,13 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-21T01:18:18-08:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-24T01:16:37-08:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
           
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/blog/categories/bahasa-indonesia/'>Bahasa-Indonesia</a>
+    <a class='category' href='/blog/categories/amd/'>AMD</a>, <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/intel/'>Intel</a>, <a class='category' href='/blog/categories/nvidia/'>NVIDIA</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>, <a class='category' href='/blog/categories/parallel-computing/'>Parallel Computing</a>
   
 </span>
 
@@ -162,7 +241,7 @@
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/01/21/mukadimah/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/01/21/mukadimah/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/01/24/en-introduction-to-parallel-programming/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/01/24/en-introduction-to-parallel-programming/" >Tweet</a>
   
   
   
@@ -172,10 +251,10 @@
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/blog/2014/01/21/chu-qi-hua/" title="Previous Post: 初期化">&laquo; 初期化</a></li>
+            <li class="previous"><a href="/blog/2014/01/21/jp-cygwin-ipython-perfection/" title="Previous Post: cygwin + ipython. Super便利.">&laquo; cygwin + ipython. Super便利.</a></li>
             
             
-            <li class="next"><a href="/blog/2014/01/21/en-cygwin-ipython-perfection/" title="Next Post: cygwin + ipython. A Perfection.">cygwin + ipython. A Perfection. &raquo;</a></li>
+            <li class="next"><a href="/blog/2014/01/24/id-introduction-to-parallel-programming/" title="Next Post: Perkenalan ke Parallel Programming: CUDA dan OpenCL">Perkenalan ke Parallel Programming: CUDA dan OpenCL &raquo;</a></li>
             
           </ul>
         
@@ -209,7 +288,7 @@
     
     
     
-    <a class="list-group-item " href="/blog/2014/01/24/en-introduction-to-parallel-programming/">Introduction to Parallel Programming: CUDA and OpenCL</a>
+    <a class="list-group-item active" href="/blog/2014/01/24/en-introduction-to-parallel-programming/">Introduction to Parallel Programming: CUDA and OpenCL</a>
     
     
     
@@ -287,7 +366,7 @@
     
     
     
-    <a class="list-group-item active" href="/blog/2014/01/21/mukadimah/">Mukadimah</a>
+    <a class="list-group-item " href="/blog/2014/01/21/mukadimah/">Mukadimah</a>
     
     
     

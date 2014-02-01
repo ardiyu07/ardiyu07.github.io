@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Perkenalan ke Parallel Programming: CUDA dan OpenCL - Yuri Ardila</title>
+  <title>Introduction to Parallel Programming: CUDA and OpenCL - Yuri Ardila</title>
   <meta name="author" content="Yuri Ardila">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/01/24/id-introduction-to-parallel-programming">
+  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/02/01/en-introduction-to-parallel-programming">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Yuri Ardila" type="application/atom+xml">
 
@@ -110,32 +110,30 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-24T01:16:37-08:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-01T01:16:37-08:00" pubdate data-updated="true">Feb 1<span>st</span>, 2014</time>
         
       </p>
     
     
     <h1 class="entry-title">
-        Perkenalan Ke Parallel Programming: CUDA Dan OpenCL
+        Introduction to Parallel Programming: CUDA and OpenCL
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix"><p>Dengan komputer yang sama, CPU yang sama, GPU yang sama, bahasa pemrograman yang sama,</p>
+<div class="entry-content clearfix"><p>Using exactly the same machine, same cpu, same gpu, same programming language,</p>
 
-<p><strong> Siapa yang gak mau liat program yang kita bikin jalan lebih cepat dari originalnya? </strong></p>
+<p><strong>Who doesn&rsquo;t want to see his programs run faster?</strong></p>
 
 <!--more-->
 
 
-<p>Akhir-akhir ini, mulai banyak framework untuk parallel programming yang bermunculan.
-Dan dengan bantuan dari programmer-programmer handal dari seluruh dunia, bahasa pemrograman
-parallel yang biasanya dilakukan dengan C atau C++, sekarang sudah bisa dilakukan
-dengan scripting language seperti Python, Ruby, atau Javascript. Ada juga yang
-mempunyai semangat tinggi untuk menggunakan framework parallel ini di bahasa yang lebih
-rumit untuk functional programming, seperti Haskell atau Clojure.</p>
+<p>Many parallel programming frameworks have been developed and released recently,
+and with the help of many amazing programmers worldwide, these APIs have also
+been wrapped beautifully into many scripting languages such as Python, Ruby,
+or even Javascript.</p>
 
 <ul>
 <li>Haskell: <a href="http://hackage.haskell.org/package/cuda">FFI binding to the CUDA interface for programming NVIDIA GPUs</a></li>
@@ -144,58 +142,49 @@ rumit untuk functional programming, seperti Haskell atau Clojure.</p>
 </ul>
 
 
-<p>Bagi yang masih belum merasakan kehebatan dari parallel programming ini,
-tunggu apalagi? Langsung menuju TKP dan download SDKnya, gan!</p>
+<p>Soo for those of you who haven&rsquo;t experienced the elegance of parallel computing,
+what are you waiting for?</p>
 
-<p>Pertama, ada <a href="http://www.nvidia.com/content/devzone/index.html">CUDA</a> yang di-maintain
-oleh NVIDIA. Saya sudah menggunakan framework ini selama kurang lebih 4 tahun.
-Frameworknya sendiri sangat simple dan straightforward untuk digunakan. Yang bikin
-saya makin terpana adalah, jumlah sample program yang disediakan oleh NVIDIA
-di dalam SDK(Software Development Kit)-nya. Bukan cuma hal-hal biasa seperti penggunakan
-CUDA APInya yang bisa kita pelajari dari SDK tersebut, tapi juga metode-metode yang bisa
-diimplementasikan dalam pengoptimisasian program (ke parallel program).</p>
+<p>First of all, there is <a href="http://www.nvidia.com/content/devzone/index.html">CUDA</a>,
+which is maintained by NVIDIA. I have been developing some programs using CUDA
+for ~4 years now. The framework itself is pretty simple and straightforward to
+use, and I am amazed with the number of sample programs NVIDIA provides which
+come along with the CUDA Toolkit. They make us incredibly easy to learn some
+basic stuff, not only how to use CUDA API but also some important algorithms
+and optimization methods to develop a parallel program using CUDA.</p>
 
-<p>Dulu sewaktu CUDA SDK masih di dalam tahap pengembangan awal (versi 1.x), sangat
-susah sekali menggunakan SDK dan menulis program dengan CUDA API. Tetapi seiring berjalannya
-waktu, CUDA Toolkit yang paling baru, sangat praktis dan mudah digunakan/dimengerti.
-Tapi perlu diingat, karena CUDA adalah model yang dikembangkan oleh NVIDIA, dan merupakan
-benda proprietary, CUDA hanya bisa digunakan di GPU yang dimanufaktur oleh NVIDIA.</p>
+<p>Having said so, actually it was pretty hard to develop using CUDA SDK back then
+(when it was still version 1.x). But as the time goes, the current SDK version
+just became easier to understand, to install, and to develop with. However,
+since CUDA API is not an open-source framework, it is only available for
+NVIDIA&rsquo;s GPUs (from GeForce 8800 to the newest one).</p>
 
-<p>FYI: Teknik untuk melakukan komputasu yang biasanya dijalankan di CPU, biasa disebut <strong>komputasi GPGPU (General Purposed GPU)</strong>.</p>
+<p>FYI: The technique of having a computation that traditionally runs on CPU,
+and then ports it to GPU, is basically called a <strong>GPGPU (General Purposed GPU) computing</strong>.</p>
 
-<p>Berikutnya, ada <a href="http://www.khronos.org/opencl/">OpenCL</a>, yang merupakan singkatan dari <strong>Open Computing Language</strong>.
-Awal mulanya, pengembangan OpenCL ini dipimpin oleh Apple dan Khronos Group (Sekarang Khronos Group yang memimpin
-development secara keseluruhan). OpenCL merupakan sebuah parallel programming framework, yang bisa dipakai
-di berbagai macam platform. Awal mulanya OpenCL hanya bisa digunakan dengan bahasa C saja, tetapi
-bermula dari spesifikasi OpenCL 1.2, bahasa C++ sudah mulai bisa digunakan dengan menggunakan wrapper library untuk
-bahasa C++.</p>
+<p>Then there is <a href="http://www.khronos.org/opencl/">OpenCL</a>, derived from <strong>Open Computing Language</strong>.
+OpenCL was initially developed by Apple and Khronos Group. It is another parallel programming
+framework, with the perk of being able to be executed in many platforms. At
+first OpenCL was only released with the standard C99, but then they added the
+C++ wrappers to the runtime API.</p>
 
-<p>Berbagai macam hardware vendor yang ternama ikut dalam pengembangan OpenCL: AMD, Intel, dan NVIDIA,
-dan menyediakan compiler dan library-nya masing-masing. Karena masing-masing vendor mempunyai
-blueprint yang berbeda untuk produknya, masing-masing vendor mengeluarkan SDK sendiri untuk
-dalam penggunaan OpenCL. Seperti misalnya, untuk architecture GPU NVIDIA, struktur kernel yang dieksekusi
-secara <a href="http://stackoverflow.com/questions/19284598/scalar-and-vector-kernels-in-opencl">scalar</a> akan mempunyai
-execution speed yang lebih besar. Sedangkan untuk architecture CPU Intel,
-struktur kernel yang di-craft untuk menggunakan <a href="http://en.wikipedia.org/wiki/Vector_processor">vector register</a>
-akan berjalan lebih cepat dibandingkan
-menggunakan struktur kernel scalar.</p>
-
-<p>SDK dari masing-masing vendor bisa didownload dari website berikut:
-<a href="http://developer.amd.com/sdks/AMDAPPSDK/Pages/default.aspx">AMD OpenCL SDK</a>,
+<p>Some major vendors support it: AMD, Intel, NVIDIA, with its own compiler.
+Since every vendor manufactures different computational technology, each of them
+releases an OpenCL programming SDK and this can be seen inside the following<br/>
+website respectively: <a href="http://developer.amd.com/sdks/AMDAPPSDK/Pages/default.aspx">AMD OpenCL SDK</a>,
 <a href="http://software.intel.com/en-us/articles/vcsource-tools-opencl-sdk/">Intel OpenCL SDK</a>,
-dan <a href="https://developer.nvidia.com/opencl">NVIDIA OpenCL SDK</a>. Masing-masing SDK dilengkapi
-dengan sample yang disediakan oleh masing-masing vendor. Menurut saya, akan lebih mudah
-untuk mempelajari OpenCL apabila kita sudah mengerti programming dengan memakai CUDA
-terlebih dahulu.</p>
+and <a href="https://developer.nvidia.com/opencl">NVIDIA OpenCL SDK</a>. Each SDK is provided
+with sample programs. IMO, learning OpenCL will not be that hard if you have
+previously done some CUDA programming.</p>
 
-<p>Tentu saja masih banyak lagi framework untuk parallel programming di luar sana.
-Rata-rata bisa didapatkan secara gratis, tapi ada juga yang tidak gratis.</p>
+<p>There are plenty more out there and you can get some of them for free
+(or maybe even already installed in your computer) but some aren&rsquo;t.</p>
 
-<p>Contoh untuk framework yang gratis: <a href="http://openmp.org/wp/">OpenMP</a>, <a href="http://threadingbuildingblocks.org/">Intel&rsquo;s TBB</a>,
+<p>Examples for free APIs: <a href="http://openmp.org/wp/">OpenMP</a>, <a href="http://threadingbuildingblocks.org/">Intel&rsquo;s TBB</a>,
 <a href="http://software.intel.com/en-us/articles/intel-array-building-blocks/">Intel&rsquo;s ArBB</a>,
 <a href="https://computing.llnl.gov/tutorials/pthreads/">Pthreads</a></p>
 
-<p>Tidak gratis: <a href="http://www.pgroup.com/resources/accel.htm">PGI&rsquo;s Compiler with OpenACC</a>,
+<p>Non free: <a href="http://www.pgroup.com/resources/accel.htm">PGI&rsquo;s Compiler with OpenACC</a>,
 <a href="http://www.caps-entreprise.com/fr/page/index.php?id=148&amp;amp;p_p=36">CAPS&#8217; Compiler with OpenACC</a></p>
 
 <!---
@@ -237,13 +226,13 @@ http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-24T01:16:37-08:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-01T01:16:37-08:00" pubdate data-updated="true">Feb 1<span>st</span>, 2014</time>
           
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/blog/categories/amd/'>AMD</a>, <a class='category' href='/blog/categories/bahasa-indonesia/'>Bahasa-Indonesia</a>, <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/intel/'>Intel</a>, <a class='category' href='/blog/categories/komputasi-paralel/'>Komputasi Paralel</a>, <a class='category' href='/blog/categories/nvidia/'>NVIDIA</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>
+    <a class='category' href='/blog/categories/amd/'>AMD</a>, <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/intel/'>Intel</a>, <a class='category' href='/blog/categories/nvidia/'>NVIDIA</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>, <a class='category' href='/blog/categories/parallel-computing/'>Parallel Computing</a>
   
 </span>
 
@@ -252,7 +241,7 @@ http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/01/24/id-introduction-to-parallel-programming/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/01/24/id-introduction-to-parallel-programming/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/02/01/en-introduction-to-parallel-programming/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/02/01/en-introduction-to-parallel-programming/" >Tweet</a>
   
   
   
@@ -262,10 +251,8 @@ http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/blog/2014/01/24/en-introduction-to-parallel-programming/" title="Previous Post: Introduction to Parallel Programming: CUDA and OpenCL">&laquo; Introduction to Parallel Programming: CUDA and OpenCL</a></li>
+            <li class="previous"><a href="/blog/2014/01/21/jp-cygwin-ipython-perfection/" title="Previous Post: cygwin + ipython. Super便利.">&laquo; cygwin + ipython. Super便利.</a></li>
             
-            
-            <li class="next"><a href="/blog/2014/01/24/jp-introduction-to-parallel-programming/" title="Next Post: 並列プログラミングの概念: CUDAとOpenCL">並列プログラミングの概念: CUDAとOpenCL &raquo;</a></li>
             
           </ul>
         
@@ -295,11 +282,7 @@ http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
   <div id="recent_posts" class="list-group">
     
     
-    
-    
-    
-    
-    <a class="list-group-item " href="/blog/2014/01/24/en-introduction-to-parallel-programming/">Introduction to Parallel Programming: CUDA and OpenCL</a>
+    <a class="list-group-item active" href="/blog/2014/02/01/en-introduction-to-parallel-programming/">Introduction to Parallel Programming: CUDA and OpenCL</a>
     
     
     
@@ -328,12 +311,6 @@ http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
   <div id="recent_posts" class="list-group">
     
     
-    <a class="list-group-item " href="/blog/2014/01/24/jp-introduction-to-parallel-programming/">並列プログラミングの概念: CUDAとOpenCL</a>
-    
-    
-    
-    
-    
     
     
     <a class="list-group-item " href="/blog/2014/01/21/jp-cygwin-ipython-perfection/">Cygwin + Ipython. Super便利.</a>
@@ -359,12 +336,6 @@ http://www.stanford.edu/class/ee282/EE282_HW2.pdf >> ARM NEON saxpy
   </div>
   
   <div id="recent_posts" class="list-group">
-    
-    
-    
-    
-    <a class="list-group-item active" href="/blog/2014/01/24/id-introduction-to-parallel-programming/">Perkenalan Ke Parallel Programming: CUDA Dan OpenCL</a>
-    
     
     
     

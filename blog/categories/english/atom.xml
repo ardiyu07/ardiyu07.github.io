@@ -4,7 +4,7 @@
   <title><![CDATA[Category: English | Yuri Ardila]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/english/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-01T05:25:34-08:00</updated>
+  <updated>2014-02-01T05:42:51-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Introduction to Parallel Programming: CUDA and OpenCL]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/24/en-introduction-to-parallel-programming/"/>
-    <updated>2014-01-24T01:16:37-08:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/24/en-introduction-to-parallel-programming</id>
+    <link href="http://ardiyu07.github.io/blog/2014/02/01/en-introduction-to-parallel-programming/"/>
+    <updated>2014-02-01T01:16:37-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/02/01/en-introduction-to-parallel-programming</id>
     <content type="html"><![CDATA[<p>Using exactly the same machine, same cpu, same gpu, same programming language,</p>
 
 <p><strong>Who doesn&rsquo;t want to see his programs run faster?</strong></p>

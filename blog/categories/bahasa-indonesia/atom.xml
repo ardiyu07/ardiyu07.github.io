@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bahasa-Indonesia | Yuri Ardila]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/bahasa-indonesia/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-03T17:40:50+09:00</updated>
+  <updated>2014-02-06T16:14:09+09:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Coding dengan Emacs and e2wm: Windows Manager yang tepat untuk Emacs]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant/"/>
+    <updated>2014-02-05T00:00:00+09:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant</id>
+    <content type="html"><![CDATA[<p>Dari saya mulai bikin program (dengan C language) 5 tahun yang lalu, saya selalu menggunakan <a href="en.wikipedia.org/wiki/Emacs">Emacs</a>.
+(Sebenernya sebelum itu pernah nulis dengan HTML dan CSS, tapi kayaknya ini bukan programming language :grin:)
+Saya gak berniat untuk pindah ke <a href="en.wikipedia.org/wiki/Vi">Vi</a>, <a href="en.wikipedia.org/wiki/Nano">Nano</a>,
+apalagi <a href="http://en.wikipedia.org/wiki/Source_code_editor">IDE editor</a>.
+Karena otomatis jari kelingking pasti ke tombol <code>Ctrl</code>.. dan Editor IDE terlalu bikin pusing untuk belajar cara pakenya untuk
+mendapatkan performance yang maksimal..
+(Dan dulu main CS juga hampir setiap hari, jadi ya memang kelingking udah gak terpisahkan sama <code>Ctrl</code>)</p>
+
+<br/>
+
+
+<br/>
+
+
+<p><img class="center <a" src="href="http://www.theinternetpatrol.com/the-argument-ginger-maryann-emacs-vi-20090825-125314.jpg">http://www.theinternetpatrol.com/the-argument-ginger-maryann-emacs-vi-20090825-125314.jpg</a>" title="" ></p>
+
+<p class="fig-title"></p>
+
+
+<p style="text-align:center;">Emacs vs Vi, Source: <a href="http://www.theinternetpatrol.com/">The Internet Patrol</a></p>
+
+<!--more-->
+
+
+<p><strong>Diskusi yang sama</strong>: <a href="http://stackoverflow.com/questions/136056/ide-or-text-editor">IDE or Text Editor?</a></p>
+
+<p>Sewaktu memakai Emacs, pasti semua setuju kalo Emacs out-of-the-box itu kurang dilengkapi sama
+tools untuk project management. Untuk mencari file di folder lain, ada waktunya kita buka window
+baru, <code>find</code> atau <code>grep</code> yang diinginkan, terus balik lagi ke Emacs. Atau setelah selesai menulis
+program, buka window baru, terus invoke compiler disitu. Disaat seperti ini, yang biasanya dilakukan
+adalah mendefine fungsi untuk mempermudah proses diatas ke <code>.emacs</code>. Lagi-lagi waktu terbuang sia-sia..</p>
+
+<p>Untuk menyelesaikan permasalahan project manager di Emacs, <a href="https://github.com/kiwanami/Emacs-window-manager">e2wm</a>
+jawabannya.</p>
+
+<p>Ada 5 jenis mode yang bisa digunakan dengan e2wm: <code>Code</code>, <code>Two</code>, <code>Doc</code>, <code>Dashboard</code>, dan <code>Array</code>,
+dimana setiap mode mempunyai karakteristik sendiri dengan dilengkapi oleh plugin Emacs yang berbeda-beda.
+Contohnya ada <a href="www.emacswiki.org/Emacs/ImenuMode">imenu</a>,
+atau <a href="http://www.gnu.org/software/Emacs/manual/html_node/Emacs/List-Buffers.html">bufferlist</a>.</p>
+
+<p><img class="center" src="/images/dp-code.png" width="480" height="288" title="&lsquo;Code mode&rsquo;" ></p>
+
+<p class="fig-title">e2wm: code mode</p>
+
+
+<br/>
+
+
+<p><img class="center" src="/images/dp-two.png" width="480" height="288" title="&lsquo;Two mode&rsquo;" ></p>
+
+<p class="fig-title">e2wm: two mode</p>
+
+
+<br/>
+
+
+<p><img class="center" src="/images/dp-code-with-shell.png" width="480" height="288" title="&lsquo;Code mode with shell window&rsquo;" ></p>
+
+<p class="fig-title">e2wm: code mode with shell window</p>
+
+
+<br/>
+
+
+<p>Untuk menggunakan e2wm, sangat simple, yang harus dilakukan adalah download file-file dibawah:
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-config.el">e2wm-config.el</a>
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-vcs.el">e2wm-vcs.el</a>
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm.el">e2wm.el</a>
+terus file-file ini ditaro di path Emacs (biasanya <code>~/.emacs.d/</code>), terus masukkin:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nb">require</span> <span class="nv">&amp;lsquo</span><span class="c1">;e2wm)</span>
+</span><span class='line'><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="nv">&amp;ldquo</span><span class="c1">;M-+&amp;rdquo;) &#39;e2wm:start-management)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>ke file <code>.emacs</code>.</p>
+
+<p>Untuk memulai penggunaan e2wm, tekan <code>C-+</code>, done!</p>
+
+<p>Github project untuk e2wm ada <a href="https://github.com/kiwanami/Emacs-window-manager">disini</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Perkenalan ke Parallel Programming: CUDA dan OpenCL]]></title>

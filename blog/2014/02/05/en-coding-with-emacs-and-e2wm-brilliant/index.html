@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Coding with Emacs and e2wm, a brilliant Emacs windows manager - Yuri Ardila</title>
+  <meta name="author" content="Yuri Ardila">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="Yuri Ardila" type="application/atom+xml">
+
+  <link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<meta name="google-site-verification" content="PBI5Qpx498rXKb5u3jTnzK0MgP9FQWLPxIaBVWMmFyA" />
+
+
+  <script src="/javascripts/libs/jquery/jquery-2.0.3.min.js"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47309787-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body   >
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Yuri Ardila</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/about">About Me</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="search navbar-form navbar-right" action="http://google.com/search" method="GET">
+                    <input type="hidden" name="q" value="site:ardiyu07.github.io">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9">
+    <article class="hentry" role="article">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-05T00:00:00+09:00" pubdate data-updated="true">Feb 5<span>th</span>, 2014</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Coding With Emacs and E2wm, a Brilliant Emacs Windows Manager
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix"><p>I&rsquo;ve been using <a href="en.wikipedia.org/wiki/Emacs">Emacs</a> since I started writing my first program 5 years ago
+(well, actually I wrote HTML and CSS long before that, but that doesn&rsquo;t count, right?).
+I never intend to move on to <a href="en.wikipedia.org/wiki/Vi">Vi</a>, <a href="en.wikipedia.org/wiki/Nano">Nano</a>, and especially <a href="http://en.wikipedia.org/wiki/Source_code_editor">IDE editor</a>, because I simply
+just cant move my pinky finger from <code>Ctrl</code>, it just automatically gets stuck there. And the IDE editors are just too fancy for me.
+(By the way I used to play Counter Strike, and just can&rsquo;t erase the habit of putting the finger there.)</p>
+
+<br/>
+
+
+<br/>
+
+
+<p><img class="center" src="http://www.theinternetpatrol.com/the-argument-ginger-maryann-emacs-vi-20090825-125314.jpg" title="" ></p>
+
+<p class="fig-title"></p>
+
+
+<p style="text-align:center;">Emacs vs Vi, Source: <a href="http://www.theinternetpatrol.com/">The Internet Patrol</a></p>
+
+<!--more-->
+
+
+<p><strong>Related discussion</strong>: <a href="http://stackoverflow.com/questions/136056/ide-or-text-editor">IDE or Text Editor?</a></p>
+
+<p>Anyway the most annoying problem when developing with Emacs is the project
+management, right? Since we don&rsquo;t want to <code>C-x C-c</code> to <code>grep</code> some information,
+or split the Emacs window to then do some shell stuffs there. It&rsquo;s pretty troublesome
+when you quit your Emacs and then you have to split the windows to your preference again.
+Times like these, usually you have to predefine the splitting functions to <code>.emacs</code>.
+It&rsquo;s gonna waste more of your precious time again.</p>
+
+<p>Well brace yourself, this tool is the perfect tool for project management
+for Emacs, <a href="https://github.com/kiwanami/Emacs-window-manager">e2wm</a></p>
+
+<p>Basically there are 5 kinds of perspectives you can choose for splitting
+the window: <code>Code</code>, <code>Two</code>, <code>Doc</code>, <code>Dashboard</code>, and <code>Array</code> perspective, which
+respectively has different Emacs plugin, such as <a href="www.emacswiki.org/Emacs/ImenuMode">imenu</a>,
+or <a href="http://www.gnu.org/software/Emacs/manual/html_node/Emacs/List-Buffers.html">bufferlist</a>.</p>
+
+<p><img class="center" src="/images/dp-code.png" width="480" height="288" title="'Code mode'" ></p>
+
+<p class="fig-title">e2wm: code mode</p>
+
+
+<br/>
+
+
+<p><img class="center" src="/images/dp-two.png" width="480" height="288" title="'Two mode'" ></p>
+
+<p class="fig-title">e2wm: two mode</p>
+
+
+<br/>
+
+
+<p><img class="center" src="/images/dp-code-with-shell.png" width="480" height="288" title="'Code mode with shell window'" ></p>
+
+<p class="fig-title">e2wm: code mode with shell window</p>
+
+
+<br/>
+
+
+<p>To use e2wm is simple, what you have to do is just download
+<a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-config.el">e2wm-config.el</a>,
+<a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-vcs.el">e2wm-vcs.el</a>,
+and <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm.el">e2wm.el</a>,
+and then put it in your Emacs path (usually is <code>~/.emacs.d/</code>), and then add:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;e2wm</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;M-+&quot;</span><span class="p">)</span> <span class="ss">&#39;e2wm:start-management</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>to your <code>.emacs</code> file, and then start e2wm with <code>C-+</code>!</p>
+
+<p>The github project for e2wm can be found <a href="https://github.com/kiwanami/Emacs-window-manager">here</a>.</p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">Yuri Ardila</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-05T00:00:00+09:00" pubdate data-updated="true">Feb 5<span>th</span>, 2014</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/editor/'>Editor</a>, <a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/e2wm/'>e2wm</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant/" >Tweet</a>
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/2014/02/01/jp-introduction-to-parallel-programming/" title="Previous Post: 並列プログラミングの概念: CUDAとOpenCL">&laquo; 並列プログラミングの概念: CUDAとOpenCL</a></li>
+            
+            
+            <li class="next"><a href="/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant/" title="Next Post: Coding dengan Emacs and e2wm: Windows Manager yang tepat untuk Emacs">Coding dengan Emacs and e2wm: Windows Manager yang tepat untuk Emacs &raquo;</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Language</h3>
+  </div>
+  <div id="recent_posts" class="list-group">
+    <a class="list-group-item " href="/blog/categories/english">English</a>
+    <a class="list-group-item " href="/blog/categories/ri-ben-yu">日本語</a>
+    <a class="list-group-item " href="/blog/categories/bahasa-indonesia">Bahasa Indonesia</a>
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item active" href="/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant/">Coding With Emacs and E2wm, a Brilliant Emacs Windows Manager</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/02/01/en-introduction-to-parallel-programming/">Introduction to Parallel Programming: CUDA and OpenCL</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/22/en-cygwin-ipython-perfection/">Cygwin + Ipython. A Perfection.</a>
+    
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">最新記事</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    
+    <a class="list-group-item " href="/blog/2014/02/05/jp-coding-with-emacs-and-e2wm-brilliant/">Emacsとe2wmでプログラムをもっと楽しく書ける！</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/02/01/jp-introduction-to-parallel-programming/">並列プログラミングの概念: CUDAとOpenCL</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/22/jp-cygwin-ipython-perfection/">Cygwin + Ipython. Super便利.</a>
+    
+    
+    
+    
+    
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Pos Terbaru</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant/">Coding Dengan Emacs and E2wm: Windows Manager Yang Tepat Untuk Emacs</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/02/01/id-introduction-to-parallel-programming/">Perkenalan Ke Parallel Programming: CUDA Dan OpenCL</a>
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/blog/2014/01/22/id-cygwin-ipython-perfection/">Cygwin + Ipython. Wajib Dicoba.</a>
+    
+    
+    
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2014 - Yuri Ardila<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+</div>
+</footer>
+    <script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr-2.0.js"></script>
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </body>
+</html>

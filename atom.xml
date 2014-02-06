@@ -4,7 +4,7 @@
   <title><![CDATA[Yuri Ardila]]></title>
   <link href="http://ardiyu07.github.io/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-03T17:40:50+09:00</updated>
+  <updated>2014-02-06T16:14:09+09:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -12,6 +12,294 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacsとe2wmでプログラムをもっと楽しく書ける！]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/02/05/jp-coding-with-emacs-and-e2wm-brilliant/"/>
+    <updated>2014-02-05T00:00:00+09:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/02/05/jp-coding-with-emacs-and-e2wm-brilliant</id>
+    <content type="html"><![CDATA[<p>5年前初めてプログラムを書きました。初めて書いたプログラムは、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include {stdio.h}</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="k">return</span> <span class="mi">0</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>でした。
+（昔はHTMLとCSSをNotepadで書いた覚えがあるけど、こいつらはプログラミング言語じゃないよね。。）</p>
+
+<p>その時からずっと、<a href="en.wikipedia.org/wiki/Emacs">Emacs</a>を
+使ってきました。<a href="en.wikipedia.org/wiki/Vi">Vi</a>とか、
+<a href="en.wikipedia.org/wiki/Nano">Nano</a>とか、その他の<a href="http://en.wikipedia.org/wiki/Source_code_editor">IDE editor</a>
+には<strong>絶対</strong>移りません。
+大きな理由としては（宗教上の問題もあって）、小指はキーボードに手を置いた瞬間、自動的にCtrlキーに
+移動するのです。（昔<a href="http://blog.counter-strike.net/">Counter Strike</a>）をずっとやってて、<code>小指はCtrl</code>
+という癖は今までも消せない）</p>
+
+<br/>
+
+
+<br/>
+
+
+<p><img class="center" src="http://www.theinternetpatrol.com/the-argument-ginger-maryann-emacs-vi-20090825-125314.jpg" title="" ></p>
+
+<p class="fig-title"></p>
+
+
+<p style="text-align:center;">Emacs vs Vi, 引用: <a href="http://www.theinternetpatrol.com/">The Internet Patrol</a></p>
+
+<!--more-->
+
+
+<p><strong>関連するディスカッション</strong>: <a href="http://stackoverflow.com/questions/136056/ide-or-text-editor">IDE or Text Editor?</a></p>
+
+<p>「Emacsを使う時は、プロジェクトの管理はやりにくい！」</p>
+
+<p>という声はいっぱいあがるでしょう。</p>
+
+<p>他のファイルを探すたんびに他のウィンドウを開けて、grepを実行して、そしてコンパイルをしたくて、
+また他のウィンドウを開けて、コンパイルコマンドを呼び出して。。
+こういう面倒な作業は、.emacsをいじってEmacs内で効率よくするために
+関数を作ったりするのが一般的だと思います。</p>
+
+<p>「そのための時間もない。。」</p>
+
+<p>と僕も思ったので、このツールを見つけました。Emacs内で動くプロジェクト管理ツールです。
+その名は、<a href="https://github.com/kiwanami/Emacs-window-manager">e2wm</a>。
+Equilibrium Emacs Window Managerの略。</p>
+
+<p>基本的には、5種類の開発モードが最初から定義されています:
+<code>Code</code>、<code>Two</code>、<code>Doc</code>、<code>Dashboard</code>、と<code>Array</code>。それぞれのモードに異なるEmacsのプラグインが
+ついています。例えばCodeモードだと<a href="www.emacswiki.org/Emacs/ImenuMode">imenu</a>と<a href="http://www.gnu.org/software/Emacs/manual/html_node/Emacs/List-Buffers.html">bufferlist</a>、
+Arrayモードだと<a href="http://www.emacswiki.org/emacs/EmacsDoctor">doctor</a>。</p>
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-code.png" width="480" height="288" title="'Code mode'" ></p>
+
+<p class="fig-title">e2wm: Codeモード</p>
+
+
+<br/>
+
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-two.png" width="480" height="288" title="'Two mode'" ></p>
+
+<p class="fig-title">e2wm: Twoモード</p>
+
+
+<br/>
+
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-code-with-shell.png" width="480" height="288" title="'Code mode with shell window'" ></p>
+
+<p class="fig-title">e2wm: Codeモード内でシェルウィンドウを開ける</p>
+
+
+<br/>
+
+
+<p>e2wmを使うには、Super簡単です。こちらのファイルをダウンロード：
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-config.el">e2wm-config.el</a>
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-vcs.el">e2wm-vcs.el</a>
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm.el">e2wm.el</a></p>
+
+<p>そして、Emacsのパス(~/.emacs.d/)に上記のファイルを入れる。</p>
+
+<p>最後に、<code>.emacs</code>に、以下のコードを挿入</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;e2wm</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;M-+&quot;</span><span class="p">)</span> <span class="ss">&#39;e2wm:start-management</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>完了！</p>
+
+<p>e2wmを使うには、Emacsを開いたあとに,<code>C-+</code>で起動できます。</p>
+
+<p>e2wmのgithubのプロジェクトは<a href="https://github.com/kiwanami/Emacs-window-manager">こちら</a>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coding dengan Emacs and e2wm: Windows Manager yang tepat untuk Emacs]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant/"/>
+    <updated>2014-02-05T00:00:00+09:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant</id>
+    <content type="html"><![CDATA[<p>Dari saya mulai bikin program (dengan C language) 5 tahun yang lalu, saya selalu menggunakan <a href="en.wikipedia.org/wiki/Emacs">Emacs</a>.
+(Sebenernya sebelum itu pernah nulis dengan HTML dan CSS, tapi kayaknya ini bukan programming language :grin:)
+Saya gak berniat untuk pindah ke <a href="en.wikipedia.org/wiki/Vi">Vi</a>, <a href="en.wikipedia.org/wiki/Nano">Nano</a>,
+apalagi <a href="http://en.wikipedia.org/wiki/Source_code_editor">IDE editor</a>.
+Karena otomatis jari kelingking pasti ke tombol <code>Ctrl</code>.. dan Editor IDE terlalu bikin pusing untuk belajar cara pakenya untuk
+mendapatkan performance yang maksimal..
+(Dan dulu main CS juga hampir setiap hari, jadi ya memang kelingking udah gak terpisahkan sama <code>Ctrl</code>)</p>
+
+<br/>
+
+
+<br/>
+
+
+<p><img class="center" src="http://www.theinternetpatrol.com/the-argument-ginger-maryann-emacs-vi-20090825-125314.jpg" title="" ></p>
+
+<p class="fig-title"></p>
+
+
+<p style="text-align:center;">Emacs vs Vi, Source: <a href="http://www.theinternetpatrol.com/">The Internet Patrol</a></p>
+
+<!--more-->
+
+
+<p><strong>Diskusi yang sama</strong>: <a href="http://stackoverflow.com/questions/136056/ide-or-text-editor">IDE or Text Editor?</a></p>
+
+<p>Sewaktu memakai Emacs, pasti semua setuju kalo Emacs out-of-the-box itu kurang dilengkapi sama
+tools untuk project management. Untuk mencari file di folder lain, ada waktunya kita buka window
+baru, <code>find</code> atau <code>grep</code> yang diinginkan, terus balik lagi ke Emacs. Atau setelah selesai menulis
+program, buka window baru, terus invoke compiler disitu. Disaat seperti ini, yang biasanya dilakukan
+adalah mendefine fungsi untuk mempermudah proses diatas ke <code>.emacs</code>. Lagi-lagi waktu terbuang sia-sia..</p>
+
+<p>Untuk menyelesaikan permasalahan project manager di Emacs, <a href="https://github.com/kiwanami/Emacs-window-manager">e2wm</a>
+jawabannya.</p>
+
+<p>Ada 5 jenis mode yang bisa digunakan dengan e2wm: <code>Code</code>, <code>Two</code>, <code>Doc</code>, <code>Dashboard</code>, dan <code>Array</code>,
+dimana setiap mode mempunyai karakteristik sendiri dengan dilengkapi oleh plugin Emacs yang berbeda-beda.
+Contohnya ada <a href="www.emacswiki.org/Emacs/ImenuMode">imenu</a>,
+atau <a href="http://www.gnu.org/software/Emacs/manual/html_node/Emacs/List-Buffers.html">bufferlist</a>.</p>
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-code.png" width="480" height="288" title="'Code mode'" ></p>
+
+<p class="fig-title">e2wm: code mode</p>
+
+
+<br/>
+
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-two.png" width="480" height="288" title="'Two mode'" ></p>
+
+<p class="fig-title">e2wm: two mode</p>
+
+
+<br/>
+
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-code-with-shell.png" width="480" height="288" title="'Code mode with shell window'" ></p>
+
+<p class="fig-title">e2wm: code mode with shell window</p>
+
+
+<br/>
+
+
+<p>Untuk menggunakan e2wm, sangat simple, yang harus dilakukan adalah download file-file dibawah:
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-config.el">e2wm-config.el</a>
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-vcs.el">e2wm-vcs.el</a>
+* <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm.el">e2wm.el</a>
+terus file-file ini ditaro di path Emacs (biasanya <code>~/.emacs.d/</code>), terus masukkin:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;e2wm</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;M-+&quot;</span><span class="p">)</span> <span class="ss">&#39;e2wm:start-management</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ke file <code>.emacs</code>.</p>
+
+<p>Untuk memulai penggunaan e2wm, tekan <code>C-+</code>, done!</p>
+
+<p>Github project untuk e2wm ada <a href="https://github.com/kiwanami/Emacs-window-manager">disini</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coding with Emacs and e2wm, a brilliant Emacs windows manager]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant/"/>
+    <updated>2014-02-05T00:00:00+09:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been using <a href="en.wikipedia.org/wiki/Emacs">Emacs</a> since I started writing my first program 5 years ago
+(well, actually I wrote HTML and CSS long before that, but that doesn&rsquo;t count, right?).
+I never intend to move on to <a href="en.wikipedia.org/wiki/Vi">Vi</a>, <a href="en.wikipedia.org/wiki/Nano">Nano</a>, and especially <a href="http://en.wikipedia.org/wiki/Source_code_editor">IDE editor</a>, because I simply
+just cant move my pinky finger from <code>Ctrl</code>, it just automatically gets stuck there. And the IDE editors are just too fancy for me.
+(By the way I used to play Counter Strike, and just can&rsquo;t erase the habit of putting the finger there.)</p>
+
+<br/>
+
+
+<br/>
+
+
+<p><img class="center" src="http://www.theinternetpatrol.com/the-argument-ginger-maryann-emacs-vi-20090825-125314.jpg" title="" ></p>
+
+<p class="fig-title"></p>
+
+
+<p style="text-align:center;">Emacs vs Vi, Source: <a href="http://www.theinternetpatrol.com/">The Internet Patrol</a></p>
+
+<!--more-->
+
+
+<p><strong>Related discussion</strong>: <a href="http://stackoverflow.com/questions/136056/ide-or-text-editor">IDE or Text Editor?</a></p>
+
+<p>Anyway the most annoying problem when developing with Emacs is the project
+management, right? Since we don&rsquo;t want to <code>C-x C-c</code> to <code>grep</code> some information,
+or split the Emacs window to then do some shell stuffs there. It&rsquo;s pretty troublesome
+when you quit your Emacs and then you have to split the windows to your preference again.
+Times like these, usually you have to predefine the splitting functions to <code>.emacs</code>.
+It&rsquo;s gonna waste more of your precious time again.</p>
+
+<p>Well brace yourself, this tool is the perfect tool for project management
+for Emacs, <a href="https://github.com/kiwanami/Emacs-window-manager">e2wm</a></p>
+
+<p>Basically there are 5 kinds of perspectives you can choose for splitting
+the window: <code>Code</code>, <code>Two</code>, <code>Doc</code>, <code>Dashboard</code>, and <code>Array</code> perspective, which
+respectively has different Emacs plugin, such as <a href="www.emacswiki.org/Emacs/ImenuMode">imenu</a>,
+or <a href="http://www.gnu.org/software/Emacs/manual/html_node/Emacs/List-Buffers.html">bufferlist</a>.</p>
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-code.png" width="480" height="288" title="'Code mode'" ></p>
+
+<p class="fig-title">e2wm: code mode</p>
+
+
+<br/>
+
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-two.png" width="480" height="288" title="'Two mode'" ></p>
+
+<p class="fig-title">e2wm: two mode</p>
+
+
+<br/>
+
+
+<p><img class="center" src="http://ardiyu07.github.io/images/dp-code-with-shell.png" width="480" height="288" title="'Code mode with shell window'" ></p>
+
+<p class="fig-title">e2wm: code mode with shell window</p>
+
+
+<br/>
+
+
+<p>To use e2wm is simple, what you have to do is just download
+<a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-config.el">e2wm-config.el</a>,
+<a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm-vcs.el">e2wm-vcs.el</a>,
+and <a href="https://github.com/kiwanami/Emacs-window-manager/blob/master/e2wm.el">e2wm.el</a>,
+and then put it in your Emacs path (usually is <code>~/.emacs.d/</code>), and then add:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;e2wm</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;M-+&quot;</span><span class="p">)</span> <span class="ss">&#39;e2wm:start-management</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>to your <code>.emacs</code> file, and then start e2wm with <code>C-+</code>!</p>
+
+<p>The github project for e2wm can be found <a href="https://github.com/kiwanami/Emacs-window-manager">here</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[並列プログラミングの概念: CUDAとOpenCL]]></title>

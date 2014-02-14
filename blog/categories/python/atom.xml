@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Yuri Ardila]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-06T16:14:09+09:00</updated>
+  <updated>2014-02-13T23:07:16-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[cygwin + ipython. Super便利.]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/22/jp-cygwin-ipython-perfection/"/>
-    <updated>2014-01-22T14:27:00+09:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/22/jp-cygwin-ipython-perfection</id>
+    <link href="http://ardiyu07.github.io/blog/2014/01/21/jp-cygwin-ipython-perfection/"/>
+    <updated>2014-01-21T21:27:00-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/01/21/jp-cygwin-ipython-perfection</id>
     <content type="html"><![CDATA[<p>僕はUNIXのプログラミング環境が好きです。ただ、なんかGNU/LinuxのGUIはピンとこないですね。
 Windows 7のGUIの方が使いやすいし、見た目もいい感じだし。（慣れの問題かな..）</p>
 
@@ -45,9 +45,9 @@ Windows 7のGUIの方が使いやすいし、見た目もいい感じだし。�
   
   <entry>
     <title type="html"><![CDATA[cygwin + ipython. Wajib Dicoba.]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/22/id-cygwin-ipython-perfection/"/>
-    <updated>2014-01-22T14:27:00+09:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/22/id-cygwin-ipython-perfection</id>
+    <link href="http://ardiyu07.github.io/blog/2014/01/21/id-cygwin-ipython-perfection/"/>
+    <updated>2014-01-21T21:27:00-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/01/21/id-cygwin-ipython-perfection</id>
     <content type="html"><![CDATA[<p>Saya termasuk orang yang suka sama UNIX environment, tapi gak terlalu suka sama GUI GNU/Linux. Karena itu sampe sekarang masih pake Windows 7.</p>
 
 <p>Orang seperti kita, cocoknya pasti menggunakan <a href="http://www.cygwin.com/">Cygwin</a>.</p>
@@ -67,9 +67,9 @@ Windows 7のGUIの方が使いやすいし、見た目もいい感じだし。�
   
   <entry>
     <title type="html"><![CDATA[cygwin + ipython. A Perfection.]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/22/en-cygwin-ipython-perfection/"/>
-    <updated>2014-01-22T14:27:00+09:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/22/en-cygwin-ipython-perfection</id>
+    <link href="http://ardiyu07.github.io/blog/2014/01/21/en-cygwin-ipython-perfection/"/>
+    <updated>2014-01-21T21:27:00-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/01/21/en-cygwin-ipython-perfection</id>
     <content type="html"><![CDATA[<p>I&rsquo;m one of those programmer who just loves anything about UNIX environment, but just feels weird about using Linux GUI hence stuck with Windows 7.</p>
 
 <p>The most perfect tool for us is of course, <a href="http://www.cygwin.com/">Cygwin</a>.</p>

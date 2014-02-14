@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Editor | Yuri Ardila]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/editor/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-06T16:14:09+09:00</updated>
+  <updated>2014-02-13T23:07:16-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Coding dengan Emacs and e2wm: Windows Manager yang tepat untuk Emacs]]></title>
     <link href="http://ardiyu07.github.io/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant/"/>
-    <updated>2014-02-05T00:00:00+09:00</updated>
+    <updated>2014-02-05T00:00:00-08:00</updated>
     <id>http://ardiyu07.github.io/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant</id>
     <content type="html"><![CDATA[<p>Dari saya mulai bikin program (dengan C language) 5 tahun yang lalu, saya selalu menggunakan <a href="en.wikipedia.org/wiki/Emacs">Emacs</a>.
 (Sebenernya sebelum itu pernah nulis dengan HTML dan CSS, tapi kayaknya ini bukan programming language :grin:)
@@ -105,7 +105,7 @@ terus file-file ini ditaro di path Emacs (biasanya <code>~/.emacs.d/</code>), te
   <entry>
     <title type="html"><![CDATA[Coding with Emacs and e2wm, a brilliant Emacs windows manager]]></title>
     <link href="http://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant/"/>
-    <updated>2014-02-05T00:00:00+09:00</updated>
+    <updated>2014-02-05T00:00:00-08:00</updated>
     <id>http://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been using <a href="en.wikipedia.org/wiki/Emacs">Emacs</a> since I started writing my first program 5 years ago
 (well, actually I wrote HTML and CSS long before that, but that doesn&rsquo;t count, right?).

@@ -1,107 +1,113 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://ardiyu07.github.io/blog/2014/01/21/first-post/</loc>
-        <lastmod>2014-01-23T17:04:31+09:00</lastmod>
+        <loc>http://ardiyu07.github.io/blog/2014/01/20/first-post/</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
         <loc>http://ardiyu07.github.io/blog/2014/01/21/chu-qi-hua/</loc>
-        <lastmod>2014-01-23T16:48:11+09:00</lastmod>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
         <loc>http://ardiyu07.github.io/blog/2014/01/21/mukadimah/</loc>
-        <lastmod>2014-01-23T16:48:15+09:00</lastmod>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
-        <loc>http://ardiyu07.github.io/blog/2014/01/22/en-cygwin-ipython-perfection/</loc>
-        <lastmod>2014-01-24T12:30:39+09:00</lastmod>
+        <loc>http://ardiyu07.github.io/blog/2014/01/21/en-cygwin-ipython-perfection/</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
-        <loc>http://ardiyu07.github.io/blog/2014/01/22/id-cygwin-ipython-perfection/</loc>
-        <lastmod>2014-01-24T13:01:04+09:00</lastmod>
+        <loc>http://ardiyu07.github.io/blog/2014/01/21/id-cygwin-ipython-perfection/</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
-        <loc>http://ardiyu07.github.io/blog/2014/01/22/jp-cygwin-ipython-perfection/</loc>
-        <lastmod>2014-01-24T12:31:52+09:00</lastmod>
+        <loc>http://ardiyu07.github.io/blog/2014/01/21/jp-cygwin-ipython-perfection/</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ardiyu07.github.io/blog/2014/02/01/en-introduction-to-parallel-programming/
         </loc>
-        <lastmod>2014-02-03T17:38:45+09:00</lastmod>
+        <lastmod>2014-02-13T22:55:51-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ardiyu07.github.io/blog/2014/02/01/id-introduction-to-parallel-programming/
         </loc>
-        <lastmod>2014-02-03T17:39:23+09:00</lastmod>
+        <lastmod>2014-02-13T22:55:28-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ardiyu07.github.io/blog/2014/02/01/jp-introduction-to-parallel-programming/
         </loc>
-        <lastmod>2014-02-03T17:39:33+09:00</lastmod>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant/
         </loc>
-        <lastmod>2014-02-06T16:09:07+09:00</lastmod>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ardiyu07.github.io/blog/2014/02/05/id-coding-with-emacs-and-e2wm-brilliant/
         </loc>
-        <lastmod>2014-02-06T16:09:10+09:00</lastmod>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ardiyu07.github.io/blog/2014/02/05/jp-coding-with-emacs-and-e2wm-brilliant/
         </loc>
-        <lastmod>2014-02-06T16:09:13+09:00</lastmod>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
-        <loc>http://ardiyu07.github.io/assets/bootstrap/css.html</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ardiyu07.github.io/assets/bootstrap/</loc>
-        <lastmod>2014-02-06T16:09:13+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ardiyu07.github.io/assets/bootstrap/getting-started.html</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ardiyu07.github.io/assets/bootstrap/about.html</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ardiyu07.github.io/assets/bootstrap/javascript.html</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ardiyu07.github.io/assets/bootstrap/components.html</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ardiyu07.github.io/assets/bootstrap/customize.html</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ardiyu07.github.io/</loc>
-        <lastmod>2014-02-06T16:09:13+09:00</lastmod>
+        <loc>
+            http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/
+        </loc>
+        <lastmod>2014-02-13T22:55:33-08:00</lastmod>
     </url>
     <url>
         <loc>http://ardiyu07.github.io/about/</loc>
-        <lastmod>2014-01-24T18:35:50+09:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ardiyu07.github.io/blog/archives/</loc>
-        <lastmod>2014-02-06T16:09:13+09:00</lastmod>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
     </url>
     <url>
         <loc>http://ardiyu07.github.io/robots.txt</loc>
-        <lastmod>2014-01-21T16:51:30+09:00</lastmod>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/</loc>
+        <lastmod>2014-02-13T22:55:51-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/assets/bootstrap/javascript.html</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/assets/bootstrap/about.html</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/assets/bootstrap/customize.html</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/assets/bootstrap/</loc>
+        <lastmod>2014-02-13T22:55:51-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/assets/bootstrap/getting-started.html</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/assets/bootstrap/css.html</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/assets/bootstrap/components.html</loc>
+        <lastmod>2014-02-13T19:51:15-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ardiyu07.github.io/blog/archives/</loc>
+        <lastmod>2014-02-13T22:55:51-08:00</lastmod>
     </url>
 </urlset>

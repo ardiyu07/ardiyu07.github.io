@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Parallelizing Technique: Loop Unrolling - Yuri Ardila</title>
+  <title>高速化手法: ループ展開 - Yuri Ardila</title>
   <meta name="author" content="Yuri Ardila">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling">
+  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/02/13/jp-parallelizing-technique-simple-loop-unrolling">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Yuri Ardila" type="application/atom+xml">
 
@@ -117,28 +117,29 @@
     
     
     <h1 class="entry-title">
-        Parallelizing Technique: Loop Unrolling
+        高速化手法: ループ展開
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix"><p>Loop unrolling, or can also be called <a href="http://en.wikipedia.org/wiki/Loop_unwinding">loop unwinding</a>,
-is the most fundamental technique in the parallel programming world, and it is also powerful.
-The idea is to break down a loop into a sequence of identical operations,
-and attach the data index pointer accordingly.</p>
+<div class="entry-content clearfix"><p>ループ展開（英：Loop Unrolling/Loop Unwinding）は、高速化の基本でもあり、効果が高い時は少なくないです。
+Wikipediaによると、</p>
+
+<blockquote><p>ループ展開の目的は、毎回の繰り返しごとに発生する「ループの終了」条件のテストを減少させる（もしくはなくす）事によって、実行速度を向上させることである。ループは、ループ自体を制御するためのオーバーヘッドがなくなるように、独立した命令ブロックの連続に書き換えることができる。</p><footer><strong>Wikipedia</strong> <cite><a href='http://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%83%97%E5%B1%95%E9%96%8B'>ループ展開</a></cite></footer></blockquote>
+
+
+
 
 <!--more-->
 
 
-<p>On a serial processor, loop unrolling can fasten the execution because it
-reduces the loop control instructions, such as pointer arithmetic and branching
-instructions. In most cases, this type of <a href="http://en.wikipedia.org/wiki/Software_pipelining">software pipelining</a>
-can also induce the advantage of pipeline-enabled processors, which is to hide
-the latency of data read-write.</p>
+<p>したがって、シリアルプロセッサでも、ループ展開によってプログラムの実行時間を減らすことができます。
+最近、大体のプロセッサはパイプライン化が可能なので、ループ展開によってデータ読み書きのレイテンシー
+を減らすことにもつながります。つまり、ループ展開は<a href="http://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%91%E3%82%A4%E3%83%97%E3%83%A9%E3%82%A4%E3%83%B3">（ソフトウェア）パイプライン</a>を促します。</p>
 
-<p>Sample snippet:</p>
+<p>サンプルコード:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -149,7 +150,7 @@ the latency of data read-write.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Loop unrolling appliance:</p>
+<p>サンプルコードにループ展開をあてると:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -166,16 +167,15 @@ the latency of data read-write.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>On a device where more than one processor can execute the same instruction (i.e. parallel processors),
-each iteration in a loop is given to a single processor, and the next iteration is then enqueued.</p>
+<p>2つ以上のプロセッサが備わっているデバイス（並列プロセッサ）には、ループ内の各イテレーションを
+各プロセッサにあてることで、同時実行可能になり、実行時間をより低くすることができます。</p>
 
-<p>The most important thing to note when dividing the workload to each thread, is the most infamous
-<a href="http://en.wikipedia.org/wiki/Data_dependency">data dependency</a>. If you are not conscientious enough
-when resolving this problem, it may lead to a wrong execution result, or slow execution speed.
-In this article, iteration in the sample snippet does not have any data dependency to the previous execution,
-so I will keep this topic for later.</p>
+<p>しかし、並列実行可能な環境に、ループを展開してワークロードを分割する時に、一つ注意点を頭に入れなければ
+ならないことがあります。それは、<a href="http://wwweic.eri.u-tokyo.ac.jp/computer/manual/altix/compile/CC/Intel_Cdoc91/main_cls/mergedProjects/optaps_cls/common/optaps_vec_dtdp.htm">データ依存性</a>のことです。間違ってループ展開をしてしまうと、不正解の実行結果に導かれたり、
+最大限の高速化を得られず、だったりします。
+ここではサンプルコードにはデータ依存性がないので、後々時間があればデータ依存性について書きます。</p>
 
-<p>OpenMP Implementation:</p>
+<p>OpenMP実装:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -188,7 +188,7 @@ so I will keep this topic for later.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>CUDA implementation:</p>
+<p>CUDA実装:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -203,7 +203,7 @@ so I will keep this topic for later.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>OpenCL implementation:</p>
+<p>OpenCL実装:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -248,7 +248,7 @@ so I will keep this topic for later.</p>
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>, <a class='category' href='/blog/categories/openmp/'>OpenMP</a>, <a class='category' href='/blog/categories/parallel-computing/'>Parallel-Computing</a>
+    <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>, <a class='category' href='/blog/categories/openmp/'>OpenMP</a>, <a class='category' href='/blog/categories/bing-lie-konpiyuteingu/'>並列コンピューティング</a>, <a class='category' href='/blog/categories/ri-ben-yu/'>日本語</a>
   
 </span>
 
@@ -257,7 +257,7 @@ so I will keep this topic for later.</p>
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/02/13/jp-parallelizing-technique-simple-loop-unrolling/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/02/13/jp-parallelizing-technique-simple-loop-unrolling/" >Tweet</a>
   
   
   
@@ -267,10 +267,8 @@ so I will keep this topic for later.</p>
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/blog/2014/02/05/jp-coding-with-emacs-and-e2wm-brilliant/" title="Previous Post: Emacsとe2wmでプログラムをもっと楽しく書ける！">&laquo; Emacsとe2wmでプログラムをもっと楽しく書ける！</a></li>
+            <li class="previous"><a href="/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/" title="Previous Post: Parallelizing Technique: Loop Unrolling">&laquo; Parallelizing Technique: Loop Unrolling</a></li>
             
-            
-            <li class="next"><a href="/blog/2014/02/13/jp-parallelizing-technique-simple-loop-unrolling/" title="Next Post: 高速化手法: ループ展開">高速化手法: ループ展開 &raquo;</a></li>
             
           </ul>
         
@@ -302,7 +300,7 @@ so I will keep this topic for later.</p>
     
     
     
-    <a class="list-group-item active" href="/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/">Parallelizing Technique: Loop Unrolling</a>
+    <a class="list-group-item " href="/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/">Parallelizing Technique: Loop Unrolling</a>
     
     
     
@@ -333,7 +331,7 @@ so I will keep this topic for later.</p>
   <div id="recent_posts" class="list-group">
     
     
-    <a class="list-group-item " href="/blog/2014/02/13/jp-parallelizing-technique-simple-loop-unrolling/">高速化手法: ループ展開</a>
+    <a class="list-group-item active" href="/blog/2014/02/13/jp-parallelizing-technique-simple-loop-unrolling/">高速化手法: ループ展開</a>
     
     
     

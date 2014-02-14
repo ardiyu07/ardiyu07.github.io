@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Komputasi-Parallel | Yuri Ardila]]></title>
+  <title><![CDATA[Category: Komputasi-Parallel | Yuri Ardila - Personal Blog]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/komputasi-parallel/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-13T23:08:18-08:00</updated>
+  <updated>2014-02-13T23:22:58-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
-    
+    <email><![CDATA[ardiyu07@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 

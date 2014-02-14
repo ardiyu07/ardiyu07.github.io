@@ -68,6 +68,12 @@
     </url>
     <url>
         <loc>
+            http://ardiyu07.github.io/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling/
+        </loc>
+        <lastmod>2014-02-13T22:55:18-08:00</lastmod>
+    </url>
+    <url>
+        <loc>
             http://ardiyu07.github.io/blog/2014/02/13/jp-parallelizing-technique-simple-loop-unrolling/
         </loc>
         <lastmod>2014-02-13T22:32:37-08:00</lastmod>

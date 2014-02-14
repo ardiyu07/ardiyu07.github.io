@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Parallelizing Technique: Loop Unrolling - Yuri Ardila</title>
+  <title>Teknik Pemrograman Parallel: Loop Unrolling - Yuri Ardila</title>
   <meta name="author" content="Yuri Ardila">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling">
+  <link rel="canonical" href="http://ardiyu07.github.io/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Yuri Ardila" type="application/atom+xml">
 
@@ -117,28 +117,33 @@
     
     
     <h1 class="entry-title">
-        Parallelizing Technique: Loop Unrolling
+        Teknik Pemrograman Parallel: Loop Unrolling
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix"><p>Loop unrolling, or can also be called <a href="http://en.wikipedia.org/wiki/Loop_unwinding">loop unwinding</a>,
-is the most fundamental technique in the parallel programming world, and it is also powerful.
-The idea is to break down a loop into a sequence of identical operations,
-and attach the data index pointer accordingly.</p>
+<div class="entry-content clearfix"><p>Loop unrolling, atau juga biasa disebut <a href="http://en.wikipedia.org/wiki/Loop_unwinding">loop unwinding</a>,
+adalah salah satu teknik mendasar dalam pemrograman parallel, dan biasanya efektif untuk mempercepat program.
+Pada umumnya, loop unrolling dilakukan dengan cara men-disassemble sebuah loop sehingga menjadi
+deretan instruksi yang sama (dengan index pointer ke memory yang berbeda).</p>
 
 <!--more-->
 
 
-<p>On a serial processor, loop unrolling can fasten the execution because it
-reduces the loop control instructions, such as pointer arithmetic and branching
-instructions. In most cases, this type of <a href="http://en.wikipedia.org/wiki/Software_pipelining">software pipelining</a>
-can also induce the advantage of pipeline-enabled processors, which is to hide
-the latency of data read-write.</p>
+<p>Walaupun dengan serial processor, loop unrolling juga bisa mengoptimisasi eksekusi program,
+karena instruksi untuk mengontrol loop tersebut akan berkurang, seperti instruksi <a href="http://en.wikipedia.org/wiki/Branch_%28computer_science%29">branching</a>
+atau pointer arithmetic.</p>
 
-<p>Sample snippet:</p>
+<p>Sebagai info tambahan, <code>gcc</code> menjalankan optimisasi loop unrolling terhadap sebuah program C
+secara implicit, dengan memberi opsi <code>-O</code>, <code>-O1</code>, atau <code>-O3</code> sewaktu mengompile program tersebut. Opsi <code>-O2</code> <strong>tidak</strong> menjalankan optimisasi ini.</p>
+
+<p>Loop unrolling juga menstimulasi <a href="http://en.wikipedia.org/wiki/Software_pipelining">software pipelining</a>,
+dan dengan menggunakan <a href="http://en.wikipedia.org/wiki/Pipeline_%28computing%29">pipelining</a>, <em>overhead</em>
+yang diakibatkan oleh data read-write bisa dikurangi.</p>
+
+<p>Contoh kode:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -149,7 +154,7 @@ the latency of data read-write.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Loop unrolling appliance:</p>
+<p>Setelah dilakukan loop unrolling:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -166,16 +171,15 @@ the latency of data read-write.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>On a device where more than one processor can execute the same instruction (i.e. parallel processors),
-each iteration in a loop is given to a single processor, and the next iteration is then enqueued.</p>
+<p>Pada device yang mempunyai processor lebih dari satu (atau parallel processors), workload di dalam
+loop tersebut akan dioper ke masing-masing processor dan dijalankan secara parallel.</p>
 
-<p>The most important thing to note when dividing the workload to each thread, is the most infamous
-<a href="http://en.wikipedia.org/wiki/Data_dependency">data dependency</a>. If you are not conscientious enough
-when resolving this problem, it may lead to a wrong execution result, or slow execution speed.
-In this article, iteration in the sample snippet does not have any data dependency to the previous execution,
-so I will keep this topic for later.</p>
+<p>Yang perlu diingat waktu membagi workload dari sebuah loop, adalah <a href="http://en.wikipedia.org/wiki/Data_dependency">data dependency</a>.
+Kalau kita tidak teliti sewaktu membagi workload untuk masing-masing thread, maka kita bisa dihadapkan
+dengan hasil eksekusi yang tidak sesuai/salah, atau optimisasi yang kurang efektif.
+Di artikel ini, tidak ada data dependency di dalam contoh kodenya, jadi tidak akan dibahas lebih lanjut disini.</p>
 
-<p>OpenMP Implementation:</p>
+<p>Implementasi OpenMP:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -188,7 +192,7 @@ so I will keep this topic for later.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>CUDA implementation:</p>
+<p>Implementasi CUDA:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -203,7 +207,7 @@ so I will keep this topic for later.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>OpenCL implementation:</p>
+<p>Implementasi OpenCL:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -248,7 +252,7 @@ so I will keep this topic for later.</p>
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>, <a class='category' href='/blog/categories/openmp/'>OpenMP</a>, <a class='category' href='/blog/categories/parallel-computing/'>Parallel-Computing</a>
+    <a class='category' href='/blog/categories/bahasa-indonesia/'>Bahasa-Indonesia</a>, <a class='category' href='/blog/categories/cuda/'>CUDA</a>, <a class='category' href='/blog/categories/komputasi-parallel/'>Komputasi-Parallel</a>, <a class='category' href='/blog/categories/opencl/'>OpenCL</a>, <a class='category' href='/blog/categories/openmp/'>OpenMP</a>
   
 </span>
 
@@ -257,7 +261,7 @@ so I will keep this topic for later.</p>
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ardiyu07.github.io/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling/" data-via="" data-counturl="http://ardiyu07.github.io/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling/" >Tweet</a>
   
   
   
@@ -267,10 +271,10 @@ so I will keep this topic for later.</p>
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/blog/2014/02/05/jp-coding-with-emacs-and-e2wm-brilliant/" title="Previous Post: Emacsとe2wmでプログラムをもっと楽しく書ける！">&laquo; Emacsとe2wmでプログラムをもっと楽しく書ける！</a></li>
+            <li class="previous"><a href="/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/" title="Previous Post: Parallelizing Technique: Loop Unrolling">&laquo; Parallelizing Technique: Loop Unrolling</a></li>
             
             
-            <li class="next"><a href="/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling/" title="Next Post: Teknik Pemrograman Parallel: Loop Unrolling">Teknik Pemrograman Parallel: Loop Unrolling &raquo;</a></li>
+            <li class="next"><a href="/blog/2014/02/13/jp-parallelizing-technique-simple-loop-unrolling/" title="Next Post: 高速化手法: ループ展開">高速化手法: ループ展開 &raquo;</a></li>
             
           </ul>
         
@@ -304,7 +308,7 @@ so I will keep this topic for later.</p>
     
     
     
-    <a class="list-group-item active" href="/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/">Parallelizing Technique: Loop Unrolling</a>
+    <a class="list-group-item " href="/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/">Parallelizing Technique: Loop Unrolling</a>
     
     
     
@@ -368,7 +372,7 @@ so I will keep this topic for later.</p>
     
     
     
-    <a class="list-group-item " href="/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling/">Teknik Pemrograman Parallel: Loop Unrolling</a>
+    <a class="list-group-item active" href="/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling/">Teknik Pemrograman Parallel: Loop Unrolling</a>
     
     
     

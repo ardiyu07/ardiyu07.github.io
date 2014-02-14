@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Parallel-Computing | Yuri Ardila]]></title>
-  <link href="http://ardiyu07.github.io/blog/categories/parallel-computing/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Komputasi-Parallel | Yuri Ardila]]></title>
+  <link href="http://ardiyu07.github.io/blog/categories/komputasi-parallel/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
   <updated>2014-02-13T23:08:18-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
@@ -14,25 +14,30 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Parallelizing Technique: Loop Unrolling]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling/"/>
+    <title type="html"><![CDATA[Teknik Pemrograman Parallel: Loop Unrolling]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling/"/>
     <updated>2014-02-13T01:09:00-08:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/02/13/en-parallelizing-technique-simple-loop-unrolling</id>
-    <content type="html"><![CDATA[<p>Loop unrolling, or can also be called <a href="http://en.wikipedia.org/wiki/Loop_unwinding">loop unwinding</a>,
-is the most fundamental technique in the parallel programming world, and it is also powerful.
-The idea is to break down a loop into a sequence of identical operations,
-and attach the data index pointer accordingly.</p>
+    <id>http://ardiyu07.github.io/blog/2014/02/13/id-parallelizing-technique-simple-loop-unrolling</id>
+    <content type="html"><![CDATA[<p>Loop unrolling, atau juga biasa disebut <a href="http://en.wikipedia.org/wiki/Loop_unwinding">loop unwinding</a>,
+adalah salah satu teknik mendasar dalam pemrograman parallel, dan biasanya efektif untuk mempercepat program.
+Pada umumnya, loop unrolling dilakukan dengan cara men-disassemble sebuah loop sehingga menjadi
+deretan instruksi yang sama (dengan index pointer ke memory yang berbeda).</p>
 
 <!--more-->
 
 
-<p>On a serial processor, loop unrolling can fasten the execution because it
-reduces the loop control instructions, such as pointer arithmetic and branching
-instructions. In most cases, this type of <a href="http://en.wikipedia.org/wiki/Software_pipelining">software pipelining</a>
-can also induce the advantage of pipeline-enabled processors, which is to hide
-the latency of data read-write.</p>
+<p>Walaupun dengan serial processor, loop unrolling juga bisa mengoptimisasi eksekusi program,
+karena instruksi untuk mengontrol loop tersebut akan berkurang, seperti instruksi <a href="http://en.wikipedia.org/wiki/Branch_%28computer_science%29">branching</a>
+atau pointer arithmetic.</p>
 
-<p>Sample snippet:<br/>
+<p>Sebagai info tambahan, <code>gcc</code> menjalankan optimisasi loop unrolling terhadap sebuah program C
+secara implicit, dengan memberi opsi <code>-O</code>, <code>-O1</code>, atau <code>-O3</code> sewaktu mengompile program tersebut. Opsi <code>-O2</code> <strong>tidak</strong> menjalankan optimisasi ini.</p>
+
+<p>Loop unrolling juga menstimulasi <a href="http://en.wikipedia.org/wiki/Software_pipelining">software pipelining</a>,
+dan dengan menggunakan <a href="http://en.wikipedia.org/wiki/Pipeline_%28computing%29">pipelining</a>, <em>overhead</em>
+yang diakibatkan oleh data read-write bisa dikurangi.</p>
+
+<p>Contoh kode:<br/>
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -47,7 +52,7 @@ the latency of data read-write.</p>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Loop unrolling appliance:
+<p>Setelah dilakukan loop unrolling:
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -68,16 +73,15 @@ the latency of data read-write.</p>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>On a device where more than one processor can execute the same instruction (i.e. parallel processors),
-each iteration in a loop is given to a single processor, and the next iteration is then enqueued.</p>
+<p>Pada device yang mempunyai processor lebih dari satu (atau parallel processors), workload di dalam
+loop tersebut akan dioper ke masing-masing processor dan dijalankan secara parallel.</p>
 
-<p>The most important thing to note when dividing the workload to each thread, is the most infamous
-<a href="http://en.wikipedia.org/wiki/Data_dependency">data dependency</a>. If you are not conscientious enough
-when resolving this problem, it may lead to a wrong execution result, or slow execution speed.
-In this article, iteration in the sample snippet does not have any data dependency to the previous execution,
-so I will keep this topic for later.</p>
+<p>Yang perlu diingat waktu membagi workload dari sebuah loop, adalah <a href="http://en.wikipedia.org/wiki/Data_dependency">data dependency</a>.
+Kalau kita tidak teliti sewaktu membagi workload untuk masing-masing thread, maka kita bisa dihadapkan
+dengan hasil eksekusi yang tidak sesuai/salah, atau optimisasi yang kurang efektif.
+Di artikel ini, tidak ada data dependency di dalam contoh kodenya, jadi tidak akan dibahas lebih lanjut disini.</p>
 
-<p>OpenMP Implementation:
+<p>Implementasi OpenMP:
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -100,7 +104,7 @@ so I will keep this topic for later.</p>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>CUDA implementation:
+<p>Implementasi CUDA:
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -119,7 +123,7 @@ so I will keep this topic for later.</p>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>OpenCL implementation:
+<p>Implementasi OpenCL:
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -137,79 +141,6 @@ so I will keep this topic for later.</p>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Introduction to Parallel Programming: CUDA and OpenCL]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/02/01/en-introduction-to-parallel-programming/"/>
-    <updated>2014-02-01T01:16:37-08:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/02/01/en-introduction-to-parallel-programming</id>
-    <content type="html"><![CDATA[<p>Using exactly the same machine, same cpu, same gpu, same programming language,</p>
-
-<p><strong>Who doesn&rsquo;t want to see his programs run faster?</strong></p>
-
-<!--more-->
-
-
-<p>Many parallel programming frameworks have been developed and released recently,
-and with the help of many amazing programmers worldwide, these APIs have also
-been wrapped beautifully into many scripting languages such as Python, Ruby,
-or even Javascript.</p>
-
-<ul>
-<li>Haskell: <a href="http://hackage.haskell.org/package/cuda">FFI binding to the CUDA interface for programming NVIDIA GPUs</a></li>
-<li>Ruby: <a href="https://github.com/xman/sgc-ruby-cuda/blob/master/doc/devel.rdoc">SGC-Ruby-CUDA</a></li>
-<li>Python: <a href="https://pypi.python.org/pypi/pyopencl">PyOpenCL</a></li>
-</ul>
-
-
-<p>Soo for those of you who haven&rsquo;t experienced the elegance of parallel computing,
-what are you waiting for?</p>
-
-<p>First of all, there is <a href="http://www.nvidia.com/content/devzone/index.html">CUDA</a>,
-which is maintained by NVIDIA. I have been developing some programs using CUDA
-for ~4 years now. The framework itself is pretty simple and straightforward to
-use, and I am amazed with the number of sample programs NVIDIA provides which
-come along with the CUDA Toolkit. They make us incredibly easy to learn some
-basic stuff, not only how to use CUDA API but also some important algorithms
-and optimization methods to develop a parallel program using CUDA.</p>
-
-<p>Having said so, actually it was pretty hard to develop using CUDA SDK back then
-(when it was still version 1.x). But as the time goes, the current SDK version
-just became easier to understand, to install, and to develop with. However,
-since CUDA API is not an open-source framework, it is only available for
-NVIDIA&rsquo;s GPUs (from GeForce 8800 to the newest one).</p>
-
-<p>FYI: The technique of having a computation that traditionally runs on CPU,
-and then ports it to GPU, is basically called a <strong>GPGPU (General Purposed GPU) computing</strong>.</p>
-
-<p>Then there is <a href="http://www.khronos.org/opencl/">OpenCL</a>, derived from <strong>Open Computing Language</strong>.
-OpenCL was initially developed by Apple and Khronos Group. It is another parallel programming
-framework, with the perk of being able to be executed in many platforms. At
-first OpenCL was only released with the standard C99, but then they added the
-C++ wrappers to the runtime API.</p>
-
-<p>Some major vendors support it: AMD, Intel, NVIDIA, with its own compiler.
-Since every vendor manufactures different computational technology, each of them
-releases an OpenCL programming SDK and this can be seen inside the following<br/>
-website respectively: <a href="http://developer.amd.com/sdks/AMDAPPSDK/Pages/default.aspx">AMD OpenCL SDK</a>,
-<a href="http://software.intel.com/en-us/articles/vcsource-tools-opencl-sdk/">Intel OpenCL SDK</a>,
-and <a href="https://developer.nvidia.com/opencl">NVIDIA OpenCL SDK</a>. Each SDK is provided
-with sample programs. IMO, learning OpenCL will not be that hard if you have
-previously done some CUDA programming.</p>
-
-<p>There are plenty more out there and you can get some of them for free
-(or maybe even already installed in your computer) but some aren&rsquo;t.</p>
-
-<p>Examples for free APIs: <a href="http://openmp.org/wp/">OpenMP</a>, <a href="http://threadingbuildingblocks.org/">Intel&rsquo;s TBB</a>,
-<a href="http://software.intel.com/en-us/articles/intel-array-building-blocks/">Intel&rsquo;s ArBB</a>,
-<a href="https://computing.llnl.gov/tutorials/pthreads/">Pthreads</a></p>
-
-<p>Non free: <a href="http://www.pgroup.com/resources/accel.htm">PGI&rsquo;s Compiler with OpenACC</a>,
-<a href="http://www.caps-entreprise.com/fr/page/index.php?id=148&amp;amp;p_p=36">CAPS' Compiler with OpenACC</a></p>
-
-<p></p>
 ]]></content>
   </entry>
   

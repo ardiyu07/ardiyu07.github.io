@@ -4,7 +4,7 @@
   <title><![CDATA[Yuri Ardila - Personal Blog]]></title>
   <link href="http://ardiyu07.github.io/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-13T23:22:58-08:00</updated>
+  <updated>2014-12-14T00:20:14-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -12,6 +12,147 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[VMwareでディスク容量を拡張する]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/12/13/jp-expanding-partition-on-vmware/"/>
+    <updated>2014-12-13T23:55:23-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/12/13/jp-expanding-partition-on-vmware</id>
+    <content type="html"><![CDATA[<p>Stackoverflowで<a href="http://unix.stackexchange.com/questions/42857/how-to-extend-centos-5-partition-on-vmware">こんなスレッド</a>を発見しましたが、やはりディスク容量の拡張はGPartedを使うほうが簡単だと思います。</p>
+
+<p>僕の場合は、ホストOSがWindows 7で、ゲストOSがCentOS 6.5。しかし、この方法は大体のUnix系OSで実施できると思います。GPartedが動けるなら。</p>
+
+<!--more-->
+
+
+<ol>
+<li>まずは、GPartedをSourceForgeからダウンロード <a href="http://sourceforge.net/projects/gparted/?source=typ_redirect" title="gparted">GParted iso file</a>.</li>
+<li>VMWareの管理メニューから、ゲストOSのサイズを拡張。僕の場合は、50GBを200GBに拡張しました。
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/expandingDisk.png" width="480" height="288"></li>
+<li>さっきダウンロードしたGPartedのisoファイルをCD/DVD(IDE)に設定。
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/GPartedIntoCDDVD.png" width="480" height="288"></li>
+<li><p>そして、CD/DVDからブートすることが大事なので、ブートスクリーンに入ってF2キーを押して、ブートメニューからCD/DVDの優先順位を最高にしないといけません。しかし、VMWareのブートスクリーンがなくなるのが早い（たぶん1秒か2秒ぐらい・・・）。そこで、ブートスクリーンの遅延を延ばしましょう<code>.vmx</code>ファイルの中身をいじります。僕の環境では、<code>.vmx</code>は<code>C:\Users\yuriardila\Documents\Virtual Machines\centos64-64bit\centos64-64bit.vmx</code>にありました。</p>
+
+<p> 下記のコードを追加します。追加位置どこでもOK・・</p>
+
+<p> <code>bios.bootdelay = 20000</code></p>
+
+<p> これで、ブートスクリーンの遅延が20秒まで延びましたよ！</p></li>
+<li>VMWareを実行して、ブートスクリーンでF2を押す。
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/EnterBootMenu.png" width="480" height="288"></li>
+<li>ブートの優先順位を変える。
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/ChangeBootPriority.png" width="480" height="288"></li>
+<li>GPartedのデフォルト設定に従う。
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/BootIntoGParted.png" width="480" height="288"></li>
+<li>そうすると、下記のウィンドウが表示されます。ここでは、<code>unallocated</code>パーティションを現在メインのLinuxパーティション<code>/dev/sda2</code>に合体させたい。
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/GPartedBooted.png" width="480" height="288"></li>
+<li>やり方はこのとおり。まずは、<code>linux swap</code>がこの間にあって、邪魔です。<code>linux swap</code>を右クリックして、<code>Resize/Move</code>を選んで、好きな位置に移動させましょう。
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/MoveLinuxSwap.png" width="480" height="288">
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/ThatShouldBeEnough.png" width="480" height="288"></li>
+<li>邪魔ものがなくなりましたので、次は<code>/dev/sda2</code>を右クリック・<code>Resize/Move</code>で、右の部分を掴んで、簡単にリサイズできるようになっています。
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/DragToSizeYouWant.png" width="480" height="288"></li>
+<li>好きなサイズにリサイズできたら、OKをクリックします。そして、チェックマークの<code>Apply</code>ボタンを押したら、次はパーティションプロセスが終わるまで待ちます！
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/Applying.png" width="480" height="288">
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/Complete.png" width="480" height="288"></li>
+<li>これで終わりです。最後に、20秒の設定を戻すのは忘れずに！<i class='emoji wink'></i></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Memperlebar Partisi di VMware]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/12/13/id-expanding-partition-on-vmware/"/>
+    <updated>2014-12-13T23:55:23-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/12/13/id-expanding-partition-on-vmware</id>
+    <content type="html"><![CDATA[<p>Saya menemukan <a href="http://unix.stackexchange.com/questions/42857/how-to-extend-centos-5-partition-on-vmware">post yang berhubungan dengan ini di stackoverflow</a>, tapi menurut saya menggunakan GParted lebih mudah dan fleksibel.</p>
+
+<p>Kali ini, saya menggunakan Windows 7 sebagai host, dan CentOS 6.5 sebagai guest, walaupun menurut saya metode ini bisa digunakan kepada linux guest manapun seperti Ubuntu, Fedora, OpenSUSE, asal bisa menjalankan GParted.</p>
+
+<!--more-->
+
+
+<ol>
+<li>Download <a href="http://sourceforge.net/projects/gparted/?source=typ_redirect" title="gparted">GParted iso file</a> dari SourceForge.</li>
+<li>Perlebar size storage untuk guest dari menu setting VMware. Disini saya menambahkan size storage guest OS saya dari 50GB ke 200GB.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/expandingDisk.png" width="480" height="288"></li>
+<li>Ubah menu CD/DVD(IDE) agar menunjuk ke GParted iso file yang baru saja kita download.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/GPartedIntoCDDVD.png" width="480" height="288"></li>
+<li><p>Karena kita akan menggunakan CD/DVD drive untuk sumber boot, kita harus mengubahnya dengan cara masuk ke boot menu dengan menekan tombol F2 di boot screen. Tetapi, karena boot screen VMware berlalu dengan sangat cepat, kita akan menambahkan delay dengan cara mengubah isi file <code>.vmx</code>. Dalam komputer saya, file tersebut ada di <code>C:\Users\yuriardila\Documents\Virtual Machines\centos64-64bit\centos64-64bit.vmx</code>.</p>
+
+<p> Tambahkan line dibawah ke dalam file tersebut. Lokasi tidak masalah.</p>
+
+<p> <code>bios.bootdelay = 20000</code></p>
+
+<p> Line diatas akan memperpanjang delay boot screen menjadi 20 detik.</p></li>
+<li>Jalankan VMware, dan tekan tombol F2 untuk masuk ke boot menu.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/EnterBootMenu.png" width="480" height="288"></li>
+<li>Ubah boot priority agar CD/DVD drive berada di paling atas.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/ChangeBootPriority.png" width="480" height="288"></li>
+<li>Boot GParted. Ikuti opsi default GParted.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/BootIntoGParted.png" width="480" height="288"></li>
+<li>Setelah boot, maka window dibawah akan muncul. Disini, saya mau partisi <code>unallocated</code> sebesar 150GB dibawah tergabung bersama partisi utama linux saya yaitu <code>/dev/sda2</code>.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/GPartedBooted.png" width="480" height="288"></li>
+<li>Melakukannya sangat mudah. Tapi sebelumnya, saya harus memindahkan kotak merah diantara kedua partisi ini (<code>linux swap</code>), agar saya bisa menggabungkan keduanya. Klik kanan di <code>linux swap</code>, kemudian pindahkan kotak merah tersebut ke lokasi baru. Disini, saya memindahkan <code>linux swap</code> agar tersisa 10GB di kanannya untuk jaga-jaga, apabila <code>linux swap</code> memerlukan size yang lebih besar.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/MoveLinuxSwap.png" width="480" height="288">
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/ThatShouldBeEnough.png" width="480" height="288"></li>
+<li>Sekarang kita bisa memperbesar partisi utama linux.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/DragToSizeYouWant.png" width="480" height="288"></li>
+<li>Klik tombol <code>Apply</code>, dan tunggu sampai semua selesai.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/Applying.png" width="480" height="288">
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/Complete.png" width="480" height="288"></li>
+<li>Setelah selesai, jangan lupa untuk merubah kembali setting untuk boot delay screen, apabila anda tidak mau menunggu sampai 20 detik untuk reboot. <i class='emoji wink'></i></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Expanding Partition on VMWare]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/12/13/en-expanding-partition-on-vmware/"/>
+    <updated>2014-12-13T23:55:23-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/12/13/en-expanding-partition-on-vmware</id>
+    <content type="html"><![CDATA[<p>Found <a href="http://unix.stackexchange.com/questions/42857/how-to-extend-centos-5-partition-on-vmware">this question</a> posted on stackoverflow, but I think using GParted is the easiest and flexible.</p>
+
+<p>I have Windows 7 as the host, and CentOS 6.5 as the guest, but I think this method will work on most linux guests where GParted works.</p>
+
+<!--more-->
+
+
+<ol>
+<li>Download <a href="http://sourceforge.net/projects/gparted/?source=typ_redirect" title="gparted">GParted iso file</a> from SourceForge.</li>
+<li>Expand the size of guest storage on VMware Settings menu. In my case, I expand the storage size from 50GB to 200GB.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/expandingDisk.png" width="480" height="288"></li>
+<li>Point the CD/DVD(IDE) to the GParted file.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/GPartedIntoCDDVD.png" width="480" height="288"></li>
+<li><p>Since we want to boot from CD/DVD drive, we have to change so on the boot screen by pressing F2 before it changes to grub menu. However since VMware&rsquo;s boot screen only flashes less than 1 second, we will change that. Go to your <code>.vmx</code>; in my case, I have it in <code>C:\Users\yuriardila\Documents\Virtual Machines\centos64-64bit\centos64-64bit.vmx</code></p>
+
+<p> Add this specific line to the file. Location does not matter.</p>
+
+<p> <code>bios.bootdelay = 20000</code></p>
+
+<p> This wil increase boot screen delay to 20 seconds. Let&rsquo;s hope that that is enough.</p></li>
+<li>Start VM, and enter setup menu by pressing F2.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/EnterBootMenu.png" width="480" height="288"></li>
+<li>Change boot priority.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/ChangeBootPriority.png" width="480" height="288"></li>
+<li>Boot GParted. Follow default options.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/BootIntoGParted.png" width="480" height="288"></li>
+<li>After it&rsquo;s booted, it should show window like this. Now I want that unallocated partition to be combined with my main CentOS partition, which is <code>/dev/sda2</code>.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/GPartedBooted.png" width="480" height="288"></li>
+<li>This can be easily done. But first, I need to move the red part (<code>linux swap</code>), so that I can combine them. Right click on the <code>linux swap</code>, and choose <code>Resize/Move</code>, and then move the red box to a location you prefer. In my case, I have enough free space following, in case this swap area need more storage.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/MoveLinuxSwap.png" width="480" height="288">
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/ThatShouldBeEnough.png" width="480" height="288"></li>
+<li>Now we can enlarge our main linux partition as we will.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/DragToSizeYouWant.png" width="480" height="288"></li>
+<li>Click <code>Apply</code> and wait until everything is done.
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/Applying.png" width="480" height="288">
+<img class="center" src="http://ardiyu07.github.io/images/expanding-partition-vmware/Complete.png" width="480" height="288"></li>
+<li>Don&rsquo;t forget to change your VMware&rsquo;s boot delay setting back, or else you will have to wait for 20 seconds on each boot. <i class='emoji wink'></i></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[高速化手法: ループ展開]]></title>

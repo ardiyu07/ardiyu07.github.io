@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bahasa-Indonesia | Yuri Ardila - Personal Blog]]></title>
   <link href="http://ardiyu07.github.io/blog/categories/bahasa-indonesia/atom.xml" rel="self"/>
   <link href="http://ardiyu07.github.io/"/>
-  <updated>2014-02-13T23:22:58-08:00</updated>
+  <updated>2014-12-14T00:20:14-08:00</updated>
   <id>http://ardiyu07.github.io/</id>
   <author>
     <name><![CDATA[Yuri Ardila]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Memperlebar Partisi di VMware]]></title>
+    <link href="http://ardiyu07.github.io/blog/2014/12/13/id-expanding-partition-on-vmware/"/>
+    <updated>2014-12-13T23:55:23-08:00</updated>
+    <id>http://ardiyu07.github.io/blog/2014/12/13/id-expanding-partition-on-vmware</id>
+    <content type="html"><![CDATA[<p>Saya menemukan <a href="http://unix.stackexchange.com/questions/42857/how-to-extend-centos-5-partition-on-vmware">post yang berhubungan dengan ini di stackoverflow</a>, tapi menurut saya menggunakan GParted lebih mudah dan fleksibel.</p>
+
+<p>Kali ini, saya menggunakan Windows 7 sebagai host, dan CentOS 6.5 sebagai guest, walaupun menurut saya metode ini bisa digunakan kepada linux guest manapun seperti Ubuntu, Fedora, OpenSUSE, asal bisa menjalankan GParted.</p>
+
+<!--more-->
+
+
+<ol>
+<li>Download <a href="http://sourceforge.net/projects/gparted/?source=typ_redirect" title="gparted">GParted iso file</a> dari SourceForge.</li>
+<li>Perlebar size storage untuk guest dari menu setting VMware. Disini saya menambahkan size storage guest OS saya dari 50GB ke 200GB.
+<img class="center" src="/images/expanding-partition-vmware/expandingDisk.png" width="480" height="288"></li>
+<li>Ubah menu CD/DVD(IDE) agar menunjuk ke GParted iso file yang baru saja kita download.
+<img class="center" src="/images/expanding-partition-vmware/GPartedIntoCDDVD.png" width="480" height="288"></li>
+<li><p>Karena kita akan menggunakan CD/DVD drive untuk sumber boot, kita harus mengubahnya dengan cara masuk ke boot menu dengan menekan tombol F2 di boot screen. Tetapi, karena boot screen VMware berlalu dengan sangat cepat, kita akan menambahkan delay dengan cara mengubah isi file <code>.vmx</code>. Dalam komputer saya, file tersebut ada di <code>C:\Users\yuriardila\Documents\Virtual Machines\centos64-64bit\centos64-64bit.vmx</code>.</p>
+
+<p> Tambahkan line dibawah ke dalam file tersebut. Lokasi tidak masalah.</p>
+
+<p> <code>bios.bootdelay = 20000</code></p>
+
+<p> Line diatas akan memperpanjang delay boot screen menjadi 20 detik.</p></li>
+<li>Jalankan VMware, dan tekan tombol F2 untuk masuk ke boot menu.
+<img class="center" src="/images/expanding-partition-vmware/EnterBootMenu.png" width="480" height="288"></li>
+<li>Ubah boot priority agar CD/DVD drive berada di paling atas.
+<img class="center" src="/images/expanding-partition-vmware/ChangeBootPriority.png" width="480" height="288"></li>
+<li>Boot GParted. Ikuti opsi default GParted.
+<img class="center" src="/images/expanding-partition-vmware/BootIntoGParted.png" width="480" height="288"></li>
+<li>Setelah boot, maka window dibawah akan muncul. Disini, saya mau partisi <code>unallocated</code> sebesar 150GB dibawah tergabung bersama partisi utama linux saya yaitu <code>/dev/sda2</code>.
+<img class="center" src="/images/expanding-partition-vmware/GPartedBooted.png" width="480" height="288"></li>
+<li>Melakukannya sangat mudah. Tapi sebelumnya, saya harus memindahkan kotak merah diantara kedua partisi ini (<code>linux swap</code>), agar saya bisa menggabungkan keduanya. Klik kanan di <code>linux swap</code>, kemudian pindahkan kotak merah tersebut ke lokasi baru. Disini, saya memindahkan <code>linux swap</code> agar tersisa 10GB di kanannya untuk jaga-jaga, apabila <code>linux swap</code> memerlukan size yang lebih besar.
+<img class="center" src="/images/expanding-partition-vmware/MoveLinuxSwap.png" width="480" height="288">
+<img class="center" src="/images/expanding-partition-vmware/ThatShouldBeEnough.png" width="480" height="288"></li>
+<li>Sekarang kita bisa memperbesar partisi utama linux.
+<img class="center" src="/images/expanding-partition-vmware/DragToSizeYouWant.png" width="480" height="288"></li>
+<li>Klik tombol <code>Apply</code>, dan tunggu sampai semua selesai.
+<img class="center" src="/images/expanding-partition-vmware/Applying.png" width="480" height="288">
+<img class="center" src="/images/expanding-partition-vmware/Complete.png" width="480" height="288"></li>
+<li>Setelah selesai, jangan lupa untuk merubah kembali setting untuk boot delay screen, apabila anda tidak mau menunggu sampai 20 detik untuk reboot. <i class='emoji wink'></i></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Teknik Pemrograman Parallel: Loop Unrolling]]></title>
@@ -336,15 +383,6 @@ Rata-rata bisa didapatkan secara gratis, tapi ada juga yang tidak gratis.</p>
 <p>Tapi sepertinya usaha itu gak sia-sia.</p>
 
 <p>Cygwin + Ipython. Mantap gan. Wajib dicoba!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mukadimah]]></title>
-    <link href="http://ardiyu07.github.io/blog/2014/01/21/mukadimah/"/>
-    <updated>2014-01-21T01:18:18-08:00</updated>
-    <id>http://ardiyu07.github.io/blog/2014/01/21/mukadimah</id>
-    <content type="html"><![CDATA[<p>Test post doang. Gak usah dihiraukan. <i class='emoji smile'></i></p>
 ]]></content>
   </entry>
   
